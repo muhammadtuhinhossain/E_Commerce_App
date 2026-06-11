@@ -1,7 +1,7 @@
+import 'package:crafty_bay/features/app/app_theme.dart';
 import 'package:crafty_bay/features/app/routes.dart';
+import 'package:crafty_bay/features/auth/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
-
-import '../auth/presentation/screens/splash_screen.dart';
 
 class CraftyBayApp extends StatelessWidget {
   const CraftyBayApp({super.key});
@@ -11,9 +11,10 @@ class CraftyBayApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Crafty Bay',
-      //home: SplashScreen(),
-      initialRoute: '/Splash',
+      initialRoute: SplashScreen.name,
       onGenerateRoute: AppRoutes.onGenerateRoute,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
     );
   }
 }
