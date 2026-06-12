@@ -1,4 +1,6 @@
+import 'package:crafty_bay/features/app/providers/theme_mode_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/app_logo.dart';
 
@@ -35,5 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+
+
 
 
