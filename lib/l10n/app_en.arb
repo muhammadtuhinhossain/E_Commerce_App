@@ -1,3 +1,6 @@
 {
-  "version": "Version"
+  "version": "Version",
+  "email": "Email",
+  "password": "Password",
+  "signIn": "Sign-in"
 }
