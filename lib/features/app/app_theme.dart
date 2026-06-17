@@ -16,7 +16,7 @@ class AppTheme {
 
   static final ThemeData _darkThemeData = ThemeData(
     colorSchemeSeed: AppColors.themeColor,
-    brightness: Brightness.dark,
+    brightness: Brightness.light,
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: AppColors.themeColor,
     ),
