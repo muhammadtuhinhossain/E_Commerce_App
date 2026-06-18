@@ -1,4 +1,5 @@
 import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
+import 'package:crafty_bay/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:crafty_bay/features/auth/presentation/widgets/app_logo.dart';
 import 'package:crafty_bay/features/shared/presentation/utils/validators.dart';
 import 'package:crafty_bay/l10n/app_localizations.dart';
@@ -78,7 +79,10 @@ class _SignInScreenState extends State<SignInScreen> {
       //TODO:call sign in api
     }
   }
-  void _onTapSignUpButton(){}
+  void _onTapSignUpButton(){
+    Navigator.pushNamed(context, SignUpScreen.name);
+  }
+
 
   @override
   void dispose() {
