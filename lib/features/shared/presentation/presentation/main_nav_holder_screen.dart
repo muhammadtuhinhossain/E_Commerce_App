@@ -3,6 +3,8 @@ import 'package:crafty_bay/features/shared/presentation/presentation/provider/ma
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../home/presentation/home_screen.dart';
+
 class MainNavHolderScreen extends StatefulWidget {
   const MainNavHolderScreen({super.key});
 
@@ -14,18 +16,19 @@ class MainNavHolderScreen extends StatefulWidget {
 
 class _MainNavHolderScreenState extends State<MainNavHolderScreen> {
 
-  // final List<Widget> _screens=[
-  //   HomeScreen();
-  //   HomeScreen();
-  //   HomeScreen();
-  //   HomeScreen();
-  // ];
+  final List<Widget> _screens=[
+    HomeScreen(),
+    HomeScreen(),
+    HomeScreen(),
+    HomeScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Consumer<MainNavHolderProvider>(
       builder: (context,mainNavHolderProvider,_) {
         return Scaffold(
+          body: _screens[mainNavHolderProvider.currentIndex],
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: mainNavHolderProvider.currentIndex,
             unselectedItemColor: Colors.grey,
