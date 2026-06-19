@@ -1,9 +1,7 @@
-import 'package:crafty_bay/features/app/providers/theme_mode_provider.dart';
-import 'package:crafty_bay/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../../l10n/app_localizations.dart';
+import '../../../shared/presentation/presentation/main_nav_holder_screen.dart';
 import '../widgets/app_logo.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -26,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _navigateToNextScreen()async{
     await Future.delayed(Duration(seconds: 2));
-    Navigator.pushReplacementNamed(context, SignInScreen.name);
+    Navigator.pushReplacementNamed(context, MainNavHolderScreen.name);
   }
 
 
