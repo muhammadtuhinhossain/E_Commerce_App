@@ -4,6 +4,7 @@ import 'package:crafty_bay/features/shared/presentation/presentation/provider/ma
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../cart/presentation/screens/cart_screen.dart';
 import '../../../home/presentation/home_screen.dart';
 import '../../../wishlist/presentation/screens/wishlist_screen.dart';
 
@@ -21,7 +22,7 @@ class _MainNavHolderScreenState extends State<MainNavHolderScreen> {
   final List<Widget> _screens=[
     HomeScreen(),
     CategoryScreen(),
-    HomeScreen(),
+    CartScreen(),
     WishlistScreen(),
   ];
 
