@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../home/presentation/home_screen.dart';
+import '../../../wishlist/presentation/screens/wishlist_screen.dart';
 
 class MainNavHolderScreen extends StatefulWidget {
   const MainNavHolderScreen({super.key});
@@ -21,7 +22,7 @@ class _MainNavHolderScreenState extends State<MainNavHolderScreen> {
     HomeScreen(),
     CategoryScreen(),
     HomeScreen(),
-    HomeScreen(),
+    WishlistScreen(),
   ];
 
   @override
