@@ -25,6 +25,7 @@ class _IncDecButtonState extends State<IncDecButton> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: .spaceBetween,
       children: [
         _iconButton(Icons.remove, (){
           if(_counter > widget.minCount){

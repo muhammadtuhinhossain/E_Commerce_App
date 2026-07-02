@@ -5,7 +5,9 @@ import 'package:crafty_bay/features/products/presentation/screens/product_list_b
 import 'package:crafty_bay/features/shared/presentation/screens/main_nav_holder_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../Reviews/presentation/screens/review_screen.dart';
 import '../auth/presentation/screens/splash_screen.dart';
+import '../products/presentation/screens/product_details_screen.dart';
 
 class AppRoutes {
   static Route<dynamic>? onGenerateRoute(RouteSettings settings){
@@ -28,6 +30,10 @@ class AppRoutes {
             categoryId: args['categoryId'],
             categoryName: args['categoryName'],
         );
+      case ProductDetailsScreen.name:
+        final String productId = settings.arguments as String;
+        widget = ProductDetailsScreen(productId: productId);
+
     }
     return MaterialPageRoute(builder: (ctx)=> widget);
   }
