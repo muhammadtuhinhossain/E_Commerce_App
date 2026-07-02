@@ -1,12 +1,12 @@
 import 'package:crafty_bay/features/app/app_colors.dart';
 import 'package:crafty_bay/features/category/presentation/screens/category_screen.dart';
-import 'package:crafty_bay/features/shared/presentation/presentation/provider/main_nav_holder_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../cart/presentation/screens/cart_screen.dart';
-import '../../../home/presentation/home_screen.dart';
+import '../../../home/presentation/screens/home_screen.dart';
 import '../../../wishlist/presentation/screens/wishlist_screen.dart';
+import '../provider/main_nav_holder_provider.dart';
 
 class MainNavHolderScreen extends StatefulWidget {
   const MainNavHolderScreen({super.key});

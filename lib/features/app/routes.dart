@@ -2,7 +2,7 @@ import 'package:crafty_bay/features/auth/presentation/screens/sign_in_screen.dar
 import 'package:crafty_bay/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:crafty_bay/features/auth/presentation/screens/verify_otp_screen.dart';
 import 'package:crafty_bay/features/products/presentation/screens/product_list_by_category_screen.dart';
-import 'package:crafty_bay/features/shared/presentation/presentation/main_nav_holder_screen.dart';
+import 'package:crafty_bay/features/shared/presentation/screens/main_nav_holder_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../auth/presentation/screens/splash_screen.dart';

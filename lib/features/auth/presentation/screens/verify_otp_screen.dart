@@ -1,6 +1,5 @@
 import 'package:crafty_bay/features/app/app_colors.dart';
 import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
-import 'package:crafty_bay/features/auth/presentation/screens/provider/otp_timer_provider.dart';
 import 'package:crafty_bay/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:crafty_bay/features/auth/presentation/widgets/app_logo.dart';
 import 'package:crafty_bay/features/shared/presentation/utils/validators.dart';
@@ -8,6 +7,8 @@ import 'package:crafty_bay/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
+
+import '../provider/otp_timer_provider.dart';
 
 class VerifyOtpScreen extends StatefulWidget {
   const VerifyOtpScreen({super.key});

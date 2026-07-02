@@ -1,9 +1,7 @@
-import 'package:crafty_bay/features/shared/presentation/presentation/provider/main_nav_holder_provider.dart';
 import 'package:crafty_bay/features/shared/presentation/widget/category_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../../app/app_colors.dart';
+import '../../../shared/presentation/provider/main_nav_holder_provider.dart';
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});

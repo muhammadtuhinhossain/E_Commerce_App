@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../app/app_colors.dart';
-import '../../../../shared/presentation/widget/category_card.dart';
+import '../../../app/app_colors.dart';
+import '../../../shared/presentation/widget/category_card.dart';
 class HomeCategorySection extends StatelessWidget {
   const HomeCategorySection({super.key});
 

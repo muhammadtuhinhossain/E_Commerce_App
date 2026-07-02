@@ -1,7 +1,8 @@
-import 'package:crafty_bay/features/shared/presentation/presentation/provider/main_nav_holder_provider.dart';
 import 'package:crafty_bay/features/shared/presentation/widget/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../../shared/presentation/provider/main_nav_holder_provider.dart';
 
 class WishlistScreen extends StatefulWidget {
   const WishlistScreen({super.key});

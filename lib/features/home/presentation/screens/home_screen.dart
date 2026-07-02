@@ -1,12 +1,13 @@
-import 'package:crafty_bay/features/home/presentation/screens/widget/home_category_section.dart';
-import 'package:crafty_bay/features/home/presentation/screens/widget/section_header.dart';
+import 'package:crafty_bay/features/home/presentation/widget/home_category_section.dart';
+import 'package:crafty_bay/features/home/presentation/widget/section_header.dart';
 import 'package:crafty_bay/features/home/presentation/widget/home_app_bar.dart';
 import 'package:crafty_bay/features/home/presentation/widget/home_carousel_slider.dart';
 import 'package:crafty_bay/features/home/presentation/widget/product_search_bar.dart';
-import 'package:crafty_bay/features/shared/presentation/presentation/provider/main_nav_holder_provider.dart';
 import 'package:crafty_bay/features/shared/presentation/widget/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../../shared/presentation/provider/main_nav_holder_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
