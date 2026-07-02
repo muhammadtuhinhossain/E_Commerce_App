@@ -68,6 +68,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               ],
                             ),
                             TextButton(onPressed: (){
+                              Navigator.pushNamed(context, ReviewScreen.name);
                             }, child: Text('Reviews')),
                             Container(
                               padding: .all(2),

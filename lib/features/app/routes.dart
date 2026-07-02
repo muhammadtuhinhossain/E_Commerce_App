@@ -34,6 +34,8 @@ class AppRoutes {
         final String productId = settings.arguments as String;
         widget = ProductDetailsScreen(productId: productId);
 
+      case ReviewScreen.name:
+        widget = ReviewScreen();
     }
     return MaterialPageRoute(builder: (ctx)=> widget);
   }
