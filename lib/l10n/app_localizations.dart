@@ -145,6 +145,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Phone'**
   String get phone;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Write Review'**
+  String get description;
 }
 
 class _AppLocalizationsDelegate

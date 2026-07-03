@@ -6,5 +6,6 @@
   "first_name": "First Name",
   "last_name": "Last Name",
   "city": "City",
-  "phone": "Phone"
+  "phone": "Phone",
+  "description": "Write Review"
 }

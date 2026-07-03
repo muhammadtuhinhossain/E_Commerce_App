@@ -31,4 +31,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get phone => 'ফোন নম্বর';
+
+  @override
+  String get description => 'পর্যালোচনা লিখুন';
 }

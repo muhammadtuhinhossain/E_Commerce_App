@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/Reviews/presentation/screens/input_review_screen.dart';
 import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:crafty_bay/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:crafty_bay/features/auth/presentation/widgets/app_logo.dart';
@@ -76,6 +77,7 @@ class _SignInScreenState extends State<SignInScreen> {
   }
   void _onTapSignInButton(){
     if(_formKey.currentState!.validate()){
+      Navigator.pushNamed(context, InputReviewScreen.name);
       //TODO:call sign in api
     }
   }

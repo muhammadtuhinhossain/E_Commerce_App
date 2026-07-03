@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/Reviews/presentation/screens/input_review_screen.dart';
 import 'package:crafty_bay/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:crafty_bay/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:crafty_bay/features/auth/presentation/screens/verify_otp_screen.dart';
@@ -36,6 +37,8 @@ class AppRoutes {
 
       case ReviewScreen.name:
         widget = ReviewScreen();
+      case InputReviewScreen.name:
+        widget = InputReviewScreen();
     }
     return MaterialPageRoute(builder: (ctx)=> widget);
   }
