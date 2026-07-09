@@ -2,7 +2,7 @@ import 'package:email_validator/email_validator.dart';
 
 class Validators {
   static String? validateInput(String? input, String message){
-    if(input != null){
+    if(input == null || input.isEmpty){
       return message;
     }
     return null;
