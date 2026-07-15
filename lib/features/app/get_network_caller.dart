@@ -1,11 +1,13 @@
 import 'package:crafty_bay/core/service/network_caller.dart';
+import 'package:crafty_bay/features/app/providers/auth_controller.dart';
 
 NetworkCaller getNetWorkCaller(){
   return NetworkCaller(
     headers: () => {
       'content-type': 'application/json',
-      // 'access-token': 'token',
-    }
+      if(AuthController.accessToken != null)
+      'token': AuthController.accessToken!,
+    },
   );
 }
 

@@ -1,10 +1,12 @@
-import 'package:crafty_bay/features/auth/data/models/user_model.dart';
+
 import 'package:flutter/material.dart';
 
 import '../../../../core/service/network_caller.dart';
 import '../../../app/get_network_caller.dart';
+import '../../../app/providers/auth_controller.dart';
 import '../../../app/urls.dart';
 import '../../data/models/sign_In_params.dart';
+import '../../data/models/user_model.dart';
 
 
 class SignInProvider extends ChangeNotifier{
@@ -29,6 +31,8 @@ class SignInProvider extends ChangeNotifier{
 
       String token = response.body['data']['token'];
       UserModel userModel = UserModel.fromJson(response.body['data']['user']);
+
+      await AuthController.saveUserData(token, userModel);
 
     }else{
       _errorMessage = response.errorMessage;
