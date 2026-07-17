@@ -1,9 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:crafty_bay/features/app/app_colors.dart';
 import 'package:flutter/material.dart';
 
+import '../../../app/app_colors.dart';
+import '../../data/models/slider_model.dart';
+
 class HomeCarouselSlider extends StatefulWidget {
-  const HomeCarouselSlider({super.key});
+  const HomeCarouselSlider({super.key, required this.sliders});
+
+  final List<SliderModel> sliders;
 
   @override
   State<HomeCarouselSlider> createState() => _HomeCarouselSliderState();
@@ -25,7 +29,7 @@ class _HomeCarouselSliderState extends State<HomeCarouselSlider> {
             _selectedIndex.value= index;
           }
           ),
-          items: [1,2,3,4,5].map((i) {
+          items: widget.sliders.map((slider) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
@@ -33,9 +37,15 @@ class _HomeCarouselSliderState extends State<HomeCarouselSlider> {
                     margin: EdgeInsets.symmetric(horizontal: 1),
                     decoration: BoxDecoration(
                         color: AppColors.themeColor,
+                      borderRadius: .circular(8),
+                      image: DecorationImage(
+                          image: NetworkImage(slider.photoUrl),
+                        onError: (_, _)=> Icon(Icons.error_outline),
+                        fit: .cover,
+                      ),
                     ),
                     alignment: Alignment.center,
-                    child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+                    //child: Text('text $i', style: TextStyle(fontSize: 16.0),)
                 );
               },
             );
@@ -48,7 +58,7 @@ class _HomeCarouselSliderState extends State<HomeCarouselSlider> {
             return Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                for(int i=0; i<5; i++)
+                for(int i=0; i<widget.sliders.length; i++)
                 Container(
                   width: 10,
                   height: 10,

@@ -1,13 +1,15 @@
-import 'package:crafty_bay/features/home/presentation/widget/home_category_section.dart';
-import 'package:crafty_bay/features/home/presentation/widget/section_header.dart';
-import 'package:crafty_bay/features/home/presentation/widget/home_app_bar.dart';
-import 'package:crafty_bay/features/home/presentation/widget/home_carousel_slider.dart';
-import 'package:crafty_bay/features/home/presentation/widget/product_search_bar.dart';
-import 'package:crafty_bay/features/shared/presentation/widget/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../shared/presentation/provider/main_nav_holder_provider.dart';
+import '../../../shared/presentation/widget/centered_progress_indicator.dart';
+import '../../../shared/presentation/widget/product_card.dart';
+import '../providers/home_sliders_provider.dart';
+import '../widget/home_app_bar.dart';
+import '../widget/home_carousel_slider.dart';
+import '../widget/home_category_section.dart';
+import '../widget/product_search_bar.dart';
+import '../widget/section_header.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,7 +21,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final textTheme= TextTheme.of(context);
     return Scaffold(
       appBar: HomeAppBar(),
       body: Padding(
@@ -29,7 +30,18 @@ class _HomeScreenState extends State<HomeScreen> {
             spacing: 16,
             children: [
               ProductSearchBar(),
-              HomeCarouselSlider(),
+              Consumer<HomeSlidersProvider>(
+                builder: (context, homeSliderProvider,_) {
+                  if(homeSliderProvider.getSlidersInProgress){
+                    return SizedBox(
+                        height: 180,
+                        child: CenteredProgressIndicator());
+                  }
+                  return HomeCarouselSlider(
+                    sliders: homeSliderProvider.sliders,
+                  );
+                }
+              ),
               SectionHeader(headerText: 'Category', onTapSeeAll: () {
                 context.read<MainNavHolderProvider>().navigateToCategory();
               }),
