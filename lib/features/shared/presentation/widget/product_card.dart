@@ -1,16 +1,14 @@
-import 'package:crafty_bay/features/products/presentation/screens/product_details_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../app/app_colors.dart';
 import '../../../app/asset_path.dart';
-class ProductCard extends StatefulWidget {
-  const ProductCard({super.key});
+import '../../../products/data/models/product_model.dart';
+import '../../../products/presentation/screens/product_details_screen.dart';
+class ProductCard extends StatelessWidget {
+  const ProductCard({super.key, required this.productModel,});
 
-  @override
-  State<ProductCard> createState() => _ProductCardState();
-}
+  final ProductModel productModel;
 
-class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
 
@@ -18,7 +16,7 @@ class _ProductCardState extends State<ProductCard> {
 
     return  GestureDetector(
       onTap: (){
-        Navigator.pushNamed(context, ProductDetailsScreen.name, arguments: 'product-id');
+        Navigator.pushNamed(context, ProductDetailsScreen.name, arguments: productModel.id);
       },
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: .circular(8)),
@@ -36,7 +34,9 @@ class _ProductCardState extends State<ProductCard> {
                   color: AppColors.themeColor.withAlpha(30),
                   borderRadius: .only(topLeft: .circular(8), topRight: .circular(8)),
                 ),
-                child: Image.asset(AssetPath.dummyPng),
+                child: Image.network(getProductPhoto(productModel.photos),
+                errorBuilder: (_, _, _)=> Image.asset(AssetPath.dummyPng),
+                ),
               ),
               SizedBox(height: 8,),
               Padding(
@@ -45,15 +45,15 @@ class _ProductCardState extends State<ProductCard> {
                   spacing: 4,
                   crossAxisAlignment: .start,
                   children: [
-                    Text('Title of product',style: TextStyle(fontWeight: .w600,color: Colors.black54),),
+                    Text(productModel.title,style: TextStyle(fontWeight: .w600,color: Colors.black54),),
                     Row(
                       mainAxisAlignment: .spaceBetween,
                       children: [
-                        Text("\$100",style: textTheme.bodyLarge?.copyWith(fontWeight: .w600,color: AppColors.themeColor),),
+                        Text('\$${productModel.price}',style: textTheme.bodyLarge?.copyWith(fontWeight: .w600,color: AppColors.themeColor),),
                         Wrap(
                           children: [
                             Icon(Icons.star,color: Colors.amber,size: 18,),
-                            Text('4.5')
+                            Text('${productModel.rating}'),
                           ],
                         ),
                         Container(
@@ -75,5 +75,13 @@ class _ProductCardState extends State<ProductCard> {
         ),
       ),
     );
+  }
+
+  String getProductPhoto(List<String> photos){
+    if(photos.isNotEmpty){
+      return '';
+    }else{
+      return photos.first;
+    }
   }
 }
