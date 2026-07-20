@@ -30,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
             spacing: 16,
             children: [
               ProductSearchBar(),
+
               Consumer<HomeSlidersProvider>(
                 builder: (context, homeSliderProvider,_) {
                   if(homeSliderProvider.getSlidersInProgress){
@@ -42,28 +43,35 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }
               ),
+
               SectionHeader(headerText: 'Category', onTapSeeAll: () {
                 context.read<MainNavHolderProvider>().navigateToCategory();
               }),
+
               HomeCategorySection(),
               SectionHeader(headerText: 'Popular', onTapSeeAll: () {}
               ),
+
               SingleChildScrollView(
                 scrollDirection: .horizontal,
                 child: Row(
                   //children: [1, 2, 3, 4, 5].map((e)=>ProductCard()).toList(),
                 ),
               ),
+
               SectionHeader(headerText: 'Special', onTapSeeAll: () {}
               ),
+
               SingleChildScrollView(
                 scrollDirection: .horizontal,
                 child: Row(
                   //children: [1, 2, 3, 4, 5].map((e)=>ProductCard()).toList(),
                 ),
               ),
+
               SectionHeader(headerText: 'New', onTapSeeAll: () {}
               ),
+
               SingleChildScrollView(
                 scrollDirection: .horizontal,
                 child: Row(

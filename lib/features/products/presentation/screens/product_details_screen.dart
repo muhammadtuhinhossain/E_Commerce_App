@@ -1,6 +1,9 @@
+import 'package:crafty_bay/features/products/presentation/providers/product_details_provider.dart';
 import 'package:crafty_bay/features/products/presentation/widgets/price_and_cart_section.dart';
+import 'package:crafty_bay/features/shared/presentation/widget/centered_progress_indicator.dart';
 import 'package:crafty_bay/features/shared/presentation/widget/inc_dec_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../Reviews/presentation/screens/review_screen.dart';
 import '../../../app/app_colors.dart';
@@ -21,95 +24,141 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+
+  final ProductDetailsProvider _productDetailsProvider = ProductDetailsProvider();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _productDetailsProvider.getProductDetails(widget.productId);
+  }
+
   @override
   Widget build(BuildContext context) {
 
     final textTheme = Theme.of(context).textTheme;
 
-    return Scaffold(
-      appBar: AppBar(title: Text('Product Details'),),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  ProductImageCarousel(),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+    return ChangeNotifierProvider.value(
+      value: _productDetailsProvider,
+      child: Scaffold(
+        appBar: AppBar(title: Text('Product Details'),),
+        body: Consumer<ProductDetailsProvider>(
+          builder: (context ,_ ,_) {
+            if(_productDetailsProvider.getProductDetailsInProgress){
+              return CenteredProgressIndicator();
+            }
+            if(_productDetailsProvider.errorMessage != null){
+              return Center(child: Text(_productDetailsProvider.errorMessage!));
+            }
+            final productModel = _productDetailsProvider.productDetails!;
+
+            return Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
                     child: Column(
-                      crossAxisAlignment: .start,
                       children: [
-                       const SizedBox(height: 16,),
-                        Row(
-                          children: [
-                            Expanded(child: Text('Adidas Sneaker New Edition 2026 Black',
-                            style: textTheme.titleMedium?.copyWith(fontSize: 18, color: Colors.black54),
-                            )),
-                            SizedBox(
-                                width: 90,
-                                child: IncDecButton(
-                                  maxCount: 20,
-                                  minCount: 1,
-                                  initialValue: 1,
-                                  onChange: (newValue){},)
-                            ),
-                          ],
-                        ),
-                        Wrap(
-                          spacing: 8,
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          children: [
-                            Wrap(
-                              spacing: 4,
-                              children: [
-                                Icon(Icons.star,color: Colors.amber,size: 20,),
-                                Text('4.5')
-                              ],
-                            ),
-                            TextButton(onPressed: (){
-                              Navigator.pushNamed(context, ReviewScreen.name);
-                            }, child: Text('Reviews')),
-                            Container(
-                              padding: .all(2),
-                              decoration: BoxDecoration(
-                                borderRadius: .circular(4),
-                                color: AppColors.themeColor,
+                        ProductImageCarousel(photos: productModel.photos,),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Column(
+                            crossAxisAlignment: .start,
+                            children: [
+                             const SizedBox(height: 16,),
+                              Row(
+                                children: [
+                                  Expanded(child:
+                                  Text(productModel.title,
+                                  style: textTheme.titleMedium?.copyWith(fontSize: 18, color: Colors.black54),
+                                  )),
+                                  SizedBox(
+                                      width: 90,
+                                      child: IncDecButton(
+                                        maxCount: productModel.quantity,
+                                        minCount: 1,
+                                        initialValue: 1,
+                                        onChange: (newValue){},)
+                                  ),
+                                ],
                               ),
-                              child: Icon(Icons.favorite_outline,size: 18,color: Colors.white,),
-                            )
-                          ],
+                              Wrap(
+                                spacing: 8,
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                children: [
+                                  Wrap(
+                                    spacing: 4,
+                                    children: [
+                                      Icon(Icons.star,color: Colors.amber,size: 20,),
+                                      Text("${productModel.rating}")
+                                    ],
+                                  ),
+                                  TextButton(onPressed: (){
+                                    Navigator.pushNamed(context, ReviewScreen.name);
+                                  }, child: Text('Reviews')),
+                                  Container(
+                                    padding: .all(2),
+                                    decoration: BoxDecoration(
+                                      borderRadius: .circular(4),
+                                      color: AppColors.themeColor,
+                                    ),
+                                    child: Icon(Icons.favorite_outline,size: 18,color: Colors.white,),
+                                  )
+                                ],
+                              ),
+                              const SizedBox(height: 16,),
+                              Visibility(
+                                visible: productModel.colors.isNotEmpty,
+                                child: Column(
+                                  crossAxisAlignment: .start,
+                                  children: [
+                                    _selectedHeader('Color'),
+                                    const SizedBox(height: 12,),
+                                    ColorPicker(
+                                      colors: productModel.colors,
+                                      onChange: (String selectedColor) {
+                                      print(selectedColor);
+                                      },),
+
+                                    const SizedBox(height: 16,),
+                                  ],
+                                ),
+                              ),
+
+                              Visibility(
+                                visible: productModel.sizes.isNotEmpty,
+                                child: Column(
+                                  crossAxisAlignment: .start,
+                                  children: [
+                                    _selectedHeader('Size'),
+                                    const SizedBox(height: 12,),
+                                    SizePicker(
+                                      sizes: productModel.sizes,
+                                      onChange: (String selectedSize) {
+                                        print(selectedSize);
+                                      },),
+
+                                    const SizedBox(height: 16,),
+                                    _selectedHeader('Description'),
+                                    const SizedBox(height: 12,),
+                                  ],
+                                ),
+                              ),
+
+                              Text(productModel.description),
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 16,),
-                        _selectedHeader('Color'),
-                        const SizedBox(height: 12,),
-                        ColorPicker(colors: ['White','Yellow','Blue','Black'],
-                          onChange: (String selectedColor) {
-                          print(selectedColor);
-                          },),
-
-                        const SizedBox(height: 16,),
-                        _selectedHeader('Size'),
-                        const SizedBox(height: 12,),
-                        SizePicker(sizes: ['S','M','L','XL'],
-                          onChange: (String selectedSize) {
-                            print(selectedSize);
-                          },),
-
-                        const SizedBox(height: 16,),
-                        _selectedHeader('Description'),
-                        const SizedBox(height: 12,),
-                        Text('''There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum'''),
                       ],
                     ),
                   ),
-                  const SizedBox(height: 16,),
-                ],
-              ),
-            ),
-          ),
-          PriceAndCartSection(),
-        ],
+                ),
+                PriceAndCartSection(),
+              ],
+            );
+          }
+        ),
       ),
     );
   }

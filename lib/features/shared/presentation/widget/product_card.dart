@@ -78,7 +78,7 @@ class ProductCard extends StatelessWidget {
   }
 
   String getProductPhoto(List<String> photos){
-    if(photos.isNotEmpty){
+    if(photos.isEmpty){
       return '';
     }else{
       return photos.first;
