@@ -1,4 +1,7 @@
+import 'package:crafty_bay/features/cart/data/models/cart_model.dart';
+import 'package:crafty_bay/features/cart/presentation/providers/cart_list_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../app/app_colors.dart';
 import '../../../app/asset_path.dart';
@@ -7,8 +10,10 @@ import '../../../shared/presentation/widget/inc_dec_button.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({
-    super.key,
+    super.key, required this.cartItemModel,
   });
+
+  final CartItemModel cartItemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -33,29 +38,36 @@ class CartItem extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: .start,
                           children: [
-                            Text('Total of Product',style: TextStyle(fontSize: 16),),
-                            Text('color: Red    size: XL',style: TextStyle(color: Colors.black54),),
+                            Text( cartItemModel.product.title,
+                              style: TextStyle(fontSize: 16),),
+                            Text('color: ${cartItemModel.color ?? ''}    size: ${cartItemModel.size ?? ''}',
+                              style: TextStyle(color: Colors.black54),),
                           ],
                         ),
                       ),
-                      IconButton(onPressed: (){}, icon: Icon(Icons.delete_outline)),
+                      IconButton(onPressed: (){
+                        //TODO: implement delete cart api
+                      }, icon: Icon(Icons.delete_outline)),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: .spaceBetween,
                     children: [
-                      Text('${Constants.takaSign}100',
+                      Text('${Constants.takaSign} ${cartItemModel.product.price}',
                         style: TextStyle(fontWeight: .w600,
                             fontSize: 18, color: AppColors.themeColor),
                       ),
                       SizedBox(
                         width: 90,
                         child: IncDecButton(
-                            maxCount: 20,
+                            maxCount: cartItemModel.product.quantity,
                             minCount: 1,
-                            initialValue: 1,
+                            initialValue: cartItemModel.quantity,
                             onChange: (int value){
-                              print (value);
+                              context.read<CartListProvider>().updateCartItemQuantity(
+                                  cartItemModel.id,
+                                  value,
+                              );
                             }
                         ),
                       ),
