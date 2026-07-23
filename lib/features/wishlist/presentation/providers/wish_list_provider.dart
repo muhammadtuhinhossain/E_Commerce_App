@@ -1,11 +1,12 @@
 import 'package:crafty_bay/features/shared/data/models/product_model.dart';
+import 'package:crafty_bay/features/wishlist/data/models/wishlist_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/service/network_caller.dart';
 import '../../../app/get_network_caller.dart';
 import '../../../app/urls.dart';
 
-class ProductListProvider extends ChangeNotifier{
+class WishlistProvider extends ChangeNotifier{
 
   final int _productsPerPage = 32;
 
@@ -16,14 +17,14 @@ class ProductListProvider extends ChangeNotifier{
   int? _lastPage;
   int _currentPage = 0;
 
-  final List<ProductModel> _productList = [];
+  final List<WishlistModel> _wishListItem = [];
   
   bool get isInitialLoading => _isInitialLoading;
   bool get isLoadingMore => _isLoadingMore;
   String? get errorMessage => _errorMessage;
-  List<ProductModel> get productList => _productList;
+  List<WishlistModel> get productList => _wishListItem;
   
-  Future<bool> getProductData()async{
+  Future<bool> getWishlistData()async{
     bool isSuccess = false;
     
     if(_currentPage == 0 || (_lastPage != null && _currentPage < _lastPage!)){
@@ -39,15 +40,15 @@ class ProductListProvider extends ChangeNotifier{
     notifyListeners();
     
     final NetworkResponse response = await getNetWorkCaller().getRequest(
-        Urls.productListUrl(_currentPage, _productsPerPage),
+        Urls.wishlistUrl(_currentPage, _productsPerPage),
     );
 
     if(response.isSuccess){
-      List<ProductModel> list = [];
+      List<WishlistModel> list = [];
       for(Map<String, dynamic> jsonData in response.body['data']['results']){
-        list.add(ProductModel.fromJson(jsonData));
+        list.add(WishlistModel.fromJson(jsonData));
       }
-      _productList.addAll(list);
+      _wishListItem.addAll(list);
       _lastPage = response.body['data']['last_page'];
     }else{
       _errorMessage = response.errorMessage;
@@ -66,8 +67,8 @@ class ProductListProvider extends ChangeNotifier{
   void refreshCategoryList(){
     _currentPage = 0;
     _lastPage = null;
-    _productList.clear();
-    getProductData();
+    _wishListItem.clear();
+    getWishlistData();
   }
   bool get isLoading => _isInitialLoading || _isLoadingMore;
 }
