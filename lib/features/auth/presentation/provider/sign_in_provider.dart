@@ -24,6 +24,7 @@ class SignInProvider extends ChangeNotifier{
     
     final NetworkResponse response = await getNetWorkCaller().postRequest(Urls.signInUrl,
     body: params.toJson(),
+      isFromLogin: true,
     );
     if(response.isSuccess){
       isSuccess = true;
