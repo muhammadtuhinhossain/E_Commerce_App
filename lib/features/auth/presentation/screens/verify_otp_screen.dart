@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/shared/presentation/screens/main_nav_holder_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
@@ -119,7 +120,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
       VerifyOtpParams(email: '', otp: _otpTEController.text),
     );
     if (isSuccess){
-      // navigate to next screen
+     Navigator.pushNamedAndRemoveUntil(context, MainNavHolderScreen.name, (predicate)=> false);
     }else{
       showSnackBarMessage(context, _verifyOtpProvider.errorMessage!);
     }
