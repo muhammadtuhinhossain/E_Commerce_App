@@ -1,17 +1,15 @@
-import 'package:crafty_bay/features/Reviews/presentation/screens/input_review_screen.dart';
-import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
-import 'package:crafty_bay/features/auth/data/models/sign_In_params.dart';
-import 'package:crafty_bay/features/auth/presentation/provider/sign_in_provider.dart';
 import 'package:crafty_bay/features/auth/presentation/screens/sign_up_screen.dart';
-import 'package:crafty_bay/features/auth/presentation/widgets/app_logo.dart';
-import 'package:crafty_bay/features/shared/presentation/screens/main_nav_holder_screen.dart';
-import 'package:crafty_bay/features/shared/presentation/utils/validators.dart';
-import 'package:crafty_bay/features/shared/presentation/widget/snack_bar_message.dart';
-import 'package:crafty_bay/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../app/extensions/localization_extension.dart';
+import '../../../shared/presentation/screens/main_nav_holder_screen.dart';
+import '../../../shared/presentation/utils/validators.dart';
 import '../../../shared/presentation/widget/centered_progress_indicator.dart';
+import '../../../shared/presentation/widget/snack_bar_message.dart';
+import '../../data/models/sign_In_params.dart';
+import '../provider/sign_in_provider.dart';
+import '../widgets/app_logo.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -125,10 +123,9 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
     _emailTEController.dispose();
     _passwordTEController.dispose();
+    super.dispose();
   }
 }
 

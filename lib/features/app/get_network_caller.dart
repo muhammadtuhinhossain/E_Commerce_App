@@ -10,12 +10,12 @@ NetworkCaller getNetWorkCaller(){
     headers: () => {
       'content-type': 'application/json',
       if(AuthController.accessToken != null)
-      'token': AuthController.accessToken!,
+        'token': AuthController.accessToken!,
     },
-    onUnauthorized: ()async{
+    onUnauthorized: () async {
       await AuthController.clearUserData();
-      Navigator.pushNamed(CraftyBayApp.navigatorKey.currentContext!, SignUpScreen.name);
-    }
+      Navigator.pushNamed(CraftyBayApp.navigatorKey.currentContext!,SignUpScreen.name,);
+    },
   );
 }
 

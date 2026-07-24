@@ -1,5 +1,3 @@
-import 'package:crafty_bay/features/cart/data/models/cart_model.dart';
-import 'package:crafty_bay/features/cart/presentation/providers/cart_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,6 +5,8 @@ import '../../../app/app_colors.dart';
 import '../../../app/asset_path.dart';
 import '../../../app/constants.dart';
 import '../../../shared/presentation/widget/inc_dec_button.dart';
+import '../../data/models/cart_model.dart';
+import '../providers/cart_list_provider.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({
@@ -40,7 +40,7 @@ class CartItem extends StatelessWidget {
                           children: [
                             Text( cartItemModel.product.title,
                               style: TextStyle(fontSize: 16),),
-                            Text('color: ${cartItemModel.color ?? ''}    size: ${cartItemModel.size ?? ''}',
+                            Text('Color: ${cartItemModel.color ?? ''}    Size: ${cartItemModel.size ?? ''}',
                               style: TextStyle(color: Colors.black54),),
                           ],
                         ),

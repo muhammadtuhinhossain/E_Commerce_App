@@ -1,9 +1,9 @@
-import 'package:crafty_bay/features/shared/presentation/screens/main_nav_holder_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 
 import '../../../app/app_colors.dart';
+import '../../../shared/presentation/screens/main_nav_holder_screen.dart';
 import '../../../shared/presentation/widget/centered_progress_indicator.dart';
 import '../../../shared/presentation/widget/snack_bar_message.dart';
 import '../../data/models/verify_otp_params.dart';
@@ -134,9 +134,8 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
     _otpTEController.dispose();
+    super.dispose();
   }
 }
 

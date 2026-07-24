@@ -1,10 +1,9 @@
-import 'package:crafty_bay/features/shared/data/models/product_model.dart';
-import 'package:crafty_bay/features/wishlist/data/models/wishlist_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/service/network_caller.dart';
 import '../../../app/get_network_caller.dart';
 import '../../../app/urls.dart';
+import '../../data/models/wishlist_model.dart';
 
 class WishlistProvider extends ChangeNotifier{
 

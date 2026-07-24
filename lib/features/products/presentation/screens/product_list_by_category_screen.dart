@@ -1,8 +1,9 @@
-import 'package:crafty_bay/features/products/presentation/providers/product_list_provider.dart';
-import 'package:crafty_bay/features/shared/presentation/widget/centered_progress_indicator.dart';
-import 'package:crafty_bay/features/shared/presentation/widget/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../../shared/presentation/widget/centered_progress_indicator.dart';
+import '../../../shared/presentation/widget/product_card.dart';
+import '../providers/product_list_provider.dart';
 
 class ProductListByCategoryScreen extends StatefulWidget {
   const ProductListByCategoryScreen({super.key, required this.categoryId, required this.categoryName});

@@ -22,9 +22,9 @@ class NetworkCaller {
     try {
       Uri uri = Uri.parse(url);
 
-      _logRequest(url);
+      _logRequest(url, headers: headers());
 
-      final Response response = await get(uri);
+      final Response response = await get(uri, headers: headers());
 
       _logResponse(response);
 
@@ -45,7 +45,6 @@ class NetworkCaller {
         return NetworkResponse(
             isSuccess: false,
             statusCode: response.statusCode,
-            body: decodedJson,
             errorMessage: decodedJson['msg']?? 'Something went wrong',
         );
       }

@@ -1,6 +1,7 @@
 import 'package:crafty_bay/features/Reviews/presentation/screens/review_screen.dart';
-import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:flutter/material.dart';
+
+import '../../../app/extensions/localization_extension.dart';
 
 class InputReviewScreen extends StatefulWidget {
   const InputReviewScreen({super.key});

@@ -1,10 +1,10 @@
-import 'package:crafty_bay/features/shared/presentation/widget/centered_progress_indicator.dart';
-import 'package:crafty_bay/features/shared/presentation/widget/product_card.dart';
-import 'package:crafty_bay/features/wishlist/presentation/providers/wish_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../shared/presentation/provider/main_nav_holder_provider.dart';
+import '../../../shared/presentation/widget/centered_progress_indicator.dart';
+import '../../../shared/presentation/widget/product_card.dart';
+import '../providers/wish_list_provider.dart';
 
 class WishlistScreen extends StatefulWidget {
   const WishlistScreen({super.key});
@@ -19,7 +19,14 @@ class _WishlistScreenState extends State<WishlistScreen> {
   final WishlistProvider _wishlistProvider = WishlistProvider();
   final ScrollController _scrollController = ScrollController();
 
-  void _LoadingMore() {
+  @override
+  void initState() {
+    super.initState();
+    _wishlistProvider.getWishlistData();
+    _scrollController.addListener(_loadMore);
+  }
+
+  void _loadMore() {
     if ((_wishlistProvider.isLoading == false) &&
         _scrollController.position.extentAfter < 300) {
       _wishlistProvider.getWishlistData();
@@ -102,5 +109,11 @@ class _WishlistScreenState extends State<WishlistScreen> {
 
   void _backToHome() {
     context.read<MainNavHolderProvider>().backToHome();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 }

@@ -1,18 +1,18 @@
-import 'package:crafty_bay/features/app/providers/auth_controller.dart';
-import 'package:crafty_bay/features/auth/presentation/screens/sign_in_screen.dart';
-import 'package:crafty_bay/features/cart/data/models/add_to_cart_params.dart';
-import 'package:crafty_bay/features/cart/presentation/providers/add_to_cart_provider.dart';
-import 'package:crafty_bay/features/products/presentation/providers/product_details_provider.dart';
-import 'package:crafty_bay/features/products/presentation/widgets/price_and_cart_section.dart';
-import 'package:crafty_bay/features/shared/presentation/widget/centered_progress_indicator.dart';
-import 'package:crafty_bay/features/shared/presentation/widget/inc_dec_button.dart';
-import 'package:crafty_bay/features/shared/presentation/widget/snack_bar_message.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Reviews/presentation/screens/review_screen.dart';
 import '../../../app/app_colors.dart';
+import '../../../app/providers/auth_controller.dart';
+import '../../../auth/presentation/screens/sign_in_screen.dart';
+import '../../../cart/data/models/add_to_cart_params.dart';
+import '../../../cart/presentation/providers/add_to_cart_provider.dart';
+import '../../../shared/presentation/widget/centered_progress_indicator.dart';
+import '../../../shared/presentation/widget/inc_dec_button.dart';
+import '../../../shared/presentation/widget/snack_bar_message.dart';
+import '../providers/product_details_provider.dart';
 import '../widgets/color_picker.dart';
+import '../widgets/price_and_cart_section.dart';
 import '../widgets/product_image_carousel.dart';
 import '../widgets/size_picker.dart';
 
@@ -156,7 +156,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 ),
                               ),
 
-                              Text(productModel.description),
+                              Text(productModel.description,
+                                style: TextStyle(color: Colors.black54),
+                              ),
                             ],
                           ),
                         ),

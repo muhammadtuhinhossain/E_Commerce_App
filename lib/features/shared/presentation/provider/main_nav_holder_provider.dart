@@ -1,7 +1,7 @@
-import 'package:crafty_bay/features/app/crafty_bay_app.dart';
-import 'package:crafty_bay/features/app/providers/auth_controller.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../../app/crafty_bay_app.dart';
+import '../../../app/providers/auth_controller.dart';
 import '../../../auth/presentation/screens/sign_in_screen.dart';
 
 class MainNavHolderProvider extends ChangeNotifier{

@@ -1,8 +1,10 @@
-import 'package:crafty_bay/core/service/network_caller.dart';
-import 'package:crafty_bay/features/app/get_network_caller.dart';
-import 'package:crafty_bay/features/app/urls.dart';
-import 'package:crafty_bay/features/cart/data/models/cart_model.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/service/network_caller.dart';
+import '../../../app/get_network_caller.dart';
+import '../../../app/providers/auth_controller.dart';
+import '../../../app/urls.dart';
+import '../../data/models/cart_model.dart';
 
 class CartListProvider extends ChangeNotifier{
   List<CartItemModel> _cartList = [];
@@ -17,12 +19,13 @@ class CartListProvider extends ChangeNotifier{
     bool isSuccess = false;
     _isLoading = true;
     notifyListeners();
+    print('AccessToken: ${AuthController.accessToken}');
 
     final NetworkResponse response = await getNetWorkCaller().getRequest(
       Urls.cartListUrl
     );
     if(response.isSuccess){
-      _cartList = response.body['data']['result']
+      _cartList = response.body['data']['results']
           .map<CartItemModel>((item)=> CartItemModel.fromJson(item))
           .toList();
 

@@ -1,9 +1,9 @@
-import 'package:crafty_bay/features/app/providers/auth_controller.dart';
-import 'package:crafty_bay/features/auth/data/models/user_model.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/service/network_caller.dart';
 import '../../../app/get_network_caller.dart';
+import '../../../app/providers/auth_controller.dart';
 import '../../../app/urls.dart';
+import '../../data/models/user_model.dart';
 import '../../data/models/verify_otp_params.dart';
 
 class VerifyOtpProvider extends ChangeNotifier{

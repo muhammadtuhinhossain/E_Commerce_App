@@ -1,12 +1,8 @@
-import 'package:crafty_bay/features/app/app_colors.dart';
-import 'package:crafty_bay/features/app/asset_path.dart';
-import 'package:crafty_bay/features/app/constants.dart';
-import 'package:crafty_bay/features/cart/presentation/providers/cart_list_provider.dart';
-import 'package:crafty_bay/features/shared/presentation/widget/inc_dec_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../shared/presentation/provider/main_nav_holder_provider.dart';
+import '../providers/cart_list_provider.dart';
 import '../widgets/cart_item.dart';
 import '../widgets/total_price_and_checkout_section.dart';
 

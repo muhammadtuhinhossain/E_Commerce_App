@@ -1,8 +1,6 @@
-import 'package:crafty_bay/features/Reviews/presentation/screens/input_review_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../app/app_colors.dart';
-import '../../../app/constants.dart';
 import '../../../auth/presentation/screens/sign_in_screen.dart';
 class ReviewAndCartSection extends StatelessWidget {
   const ReviewAndCartSection({

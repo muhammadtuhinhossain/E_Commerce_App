@@ -1,5 +1,4 @@
-import 'package:crafty_bay/features/shared/data/models/product_model.dart';
-import 'package:intl/intl.dart';
+import '../../../shared/data/models/product_model.dart';
 
 class WishlistModel {
   final String cartId;

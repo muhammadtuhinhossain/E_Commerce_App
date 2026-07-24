@@ -1,15 +1,14 @@
-import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
-import 'package:crafty_bay/features/auth/presentation/provider/sign_up_provider.dart';
 import 'package:crafty_bay/features/auth/presentation/screens/verify_otp_screen.dart';
-import 'package:crafty_bay/features/auth/presentation/widgets/app_logo.dart';
-import 'package:crafty_bay/features/shared/presentation/utils/validators.dart';
-import 'package:crafty_bay/features/shared/presentation/widget/snack_bar_message.dart';
-import 'package:crafty_bay/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../app/extensions/localization_extension.dart';
+import '../../../shared/presentation/utils/validators.dart';
 import '../../../shared/presentation/widget/centered_progress_indicator.dart';
+import '../../../shared/presentation/widget/snack_bar_message.dart';
 import '../../data/models/sign_up_params.dart';
+import '../provider/sign_up_provider.dart';
+import '../widgets/app_logo.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -42,13 +41,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
       value: _signUpProvider,
       child: Scaffold(
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: SingleChildScrollView(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
               child: Form(
                 key: _formKey,
                 autovalidateMode: .onUserInteraction,
-                onChanged: _checkTfFormValid,
+                onChanged: _checkIfFormValid,
                 child: Column(
                   children: [
                     SizedBox(height: 60,),
@@ -146,7 +145,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     Navigator.pop(context);
   }
 
-  void _checkTfFormValid(){
+  void _checkIfFormValid(){
     if(_formKey.currentState!.validate()){
      _enableButton = true;
     }else{
@@ -170,23 +169,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
         password: _passwordTEController.text,
     );
     final bool isSuccess = await _signUpProvider.signUp(params);
-    if(isSuccess){
+    if(isSuccess && mounted){
       Navigator.pushNamed(context, VerifyOtpScreen.name, arguments: _emailTEController.text.trim());
-    }else{
+    }else if (mounted){
       showSnackBarMessage(context, _signUpProvider.errorMessage!);
     }
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
     _emailTEController.dispose();
     _passwordTEController.dispose();
     _firstnameTEController.dispose();
     _lastNameTEController.dispose();
     _phoneTEController.dispose();
     _cityTEController.dispose();
+    super.dispose();
   }
 }
 

@@ -54,7 +54,7 @@ class _MainNavHolderScreenState extends State<MainNavHolderScreen> {
               currentIndex: mainNavHolderProvider.currentIndex,
               unselectedItemColor: Colors.grey,
                 selectedItemColor: AppColors.themeColor,
-                showSelectedLabels: true,
+                showUnselectedLabels: true,
                 onTap: mainNavHolderProvider.changeIndex,
 
                 items: [
