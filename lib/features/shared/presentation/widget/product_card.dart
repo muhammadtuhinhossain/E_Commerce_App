@@ -1,7 +1,12 @@
+import 'package:crafty_bay/features/wishlist/presentation/providers/wish_list_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../app/app_colors.dart';
 import '../../../app/asset_path.dart';
+import '../../../app/constants.dart';
+import '../../../app/providers/auth_controller.dart';
+import '../../../auth/presentation/screens/sign_in_screen.dart';
 import '../../data/models/product_model.dart';
 import '../../../products/presentation/screens/product_details_screen.dart';
 class ProductCard extends StatelessWidget {
@@ -49,20 +54,33 @@ class ProductCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: .spaceBetween,
                       children: [
-                        Text('\$${productModel.price}',style: textTheme.bodyLarge?.copyWith(fontWeight: .w600,color: AppColors.themeColor),),
+                        Text('${Constants.takaSign}${productModel.price}',
+                          style: textTheme.bodyLarge?.copyWith(fontWeight: .w600,color: AppColors.themeColor),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                         Wrap(
                           children: [
                             Icon(Icons.star,color: Colors.amber,size: 18,),
                             Text('${productModel.rating}'),
                           ],
                         ),
-                        Container(
-                          padding: .all(2),
-                          decoration: BoxDecoration(
-                            borderRadius: .circular(4),
-                            color: AppColors.themeColor,
-                          ),
-                          child: Icon(Icons.favorite_outline,size: 18,color: Colors.white,),
+                        SizedBox(width: 4,),
+                        Consumer<WishlistProvider>(
+                          builder: (context, wishlistProvider, _) {
+                            final bool isFavorite = wishlistProvider.isInWishlist(productModel.id);
+                            return GestureDetector(
+                              onTap: ()=> _onTapFavorite(context, wishlistProvider),
+                              child: Container(
+                                padding: .all(2),
+                                decoration: BoxDecoration(
+                                  borderRadius: .circular(4),
+                                  color:  isFavorite ? Colors.red : AppColors.themeColor,
+                                ),
+                                child: Icon(isFavorite ? Icons.favorite : Icons.favorite_outline,
+                                  size: 18,color: Colors.white,),
+                              ),
+                            );
+                          }
                         ),
                       ],
                     ),
@@ -75,6 +93,17 @@ class ProductCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _onTapFavorite(BuildContext context, WishlistProvider wishlistProvider)async{
+    final bool isLoggedIn = await AuthController.isLoggedIn();
+    if(context.mounted == false) return;
+
+    if(isLoggedIn == false){
+      Navigator.pushNamed(context, SignInScreen.name);
+      return;
+    }
+    await wishlistProvider.toggleWishlist(productModel);
   }
 
   String getProductPhoto(List<String> photos){

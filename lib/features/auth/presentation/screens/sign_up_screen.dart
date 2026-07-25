@@ -1,7 +1,9 @@
 import 'package:crafty_bay/features/auth/presentation/screens/verify_otp_screen.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../app/app_colors.dart';
 import '../../../app/extensions/localization_extension.dart';
 import '../../../shared/presentation/utils/validators.dart';
 import '../../../shared/presentation/widget/centered_progress_indicator.dart';
@@ -131,7 +133,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         );
                       }
                     ),
-                    TextButton(onPressed: _onTapSignInButton, child: Text("have an account? Sing in")),
+                    SizedBox(height: 15,),
+                    RichText(
+                      text: TextSpan(
+                        style: TextStyle(color: Colors.black54, fontSize: 14),
+                        children: [
+                          TextSpan(text: "Already have an account? "),
+                          TextSpan(
+                            text: "Sign in",
+                            style: TextStyle(
+                              color: AppColors.themeColor,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            recognizer: TapGestureRecognizer()..onTap = _onTapSignInButton,
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),

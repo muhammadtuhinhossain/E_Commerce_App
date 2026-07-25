@@ -1,7 +1,9 @@
 import 'package:crafty_bay/features/auth/presentation/screens/sign_up_screen.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../app/app_colors.dart';
 import '../../../app/extensions/localization_extension.dart';
 import '../../../shared/presentation/screens/main_nav_holder_screen.dart';
 import '../../../shared/presentation/utils/validators.dart';
@@ -82,7 +84,23 @@ class _SignInScreenState extends State<SignInScreen> {
                         return FilledButton(onPressed: _onTapSignInButton, child: Text('Sing-in'));
                       }
                     ),
-                    TextButton(onPressed: _onTapSignUpButton, child: Text("Don't have an account? Sing up")),
+                    SizedBox(height: 15,),
+                    RichText(
+                      text: TextSpan(
+                        style: TextStyle(color: Colors.black54, fontSize: 14),
+                        children: [
+                          TextSpan(text: "Don't have an account? "),
+                          TextSpan(
+                            text: " Sign up",
+                            style: TextStyle(
+                              color: AppColors.themeColor,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            recognizer: TapGestureRecognizer()..onTap = _onTapSignUpButton,
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -94,8 +112,6 @@ class _SignInScreenState extends State<SignInScreen> {
   }
   void _onTapSignInButton(){
     if(_formKey.currentState!.validate()){
-      // Navigator.pushNamed(context, InputReviewScreen.name);
-      // //TODO:call sign in api
       _signIn();
     }
   }

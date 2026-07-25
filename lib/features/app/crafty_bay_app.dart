@@ -1,4 +1,5 @@
 
+import 'package:crafty_bay/features/app/providers/auth_controller.dart';
 import 'package:crafty_bay/features/app/providers/locale_provider.dart';
 import 'package:crafty_bay/features/app/providers/theme_mode_provider.dart';
 import 'package:crafty_bay/features/app/routes.dart';
@@ -9,6 +10,7 @@ import 'package:provider/provider.dart';
 import '../../l10n/app_localizations.dart';
 import '../auth/presentation/screens/splash_screen.dart';
 import '../shared/presentation/provider/main_nav_holder_provider.dart';
+import '../wishlist/presentation/providers/wish_list_provider.dart';
 import 'app_theme.dart';
 
 class CraftyBayApp extends StatefulWidget {
@@ -24,6 +26,7 @@ class _CraftyBayAppState extends State<CraftyBayApp> {
   
   final ThemeModeProvider _themeModeProvider = ThemeModeProvider();
   final LocaleProvider _localeProvider = LocaleProvider();
+  final WishlistProvider _wishlistProvider = WishlistProvider();
   
   @override
   void initState() {
@@ -39,6 +42,7 @@ class _CraftyBayAppState extends State<CraftyBayApp> {
       providers: [
         ChangeNotifierProvider.value(value: _themeModeProvider),
         ChangeNotifierProvider.value(value: _localeProvider),
+        ChangeNotifierProvider.value(value: _wishlistProvider),
         ChangeNotifierProvider(create: (_)=> MainNavHolderProvider()),
       ],
       child: Consumer<LocaleProvider>(

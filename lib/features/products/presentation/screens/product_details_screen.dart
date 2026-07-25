@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/wishlist/presentation/providers/wish_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,6 +9,7 @@ import '../../../app/providers/auth_controller.dart';
 import '../../../auth/presentation/screens/sign_in_screen.dart';
 import '../../../cart/data/models/add_to_cart_params.dart';
 import '../../../cart/presentation/providers/add_to_cart_provider.dart';
+import '../../../shared/data/models/product_model.dart';
 import '../../../shared/presentation/widget/centered_progress_indicator.dart';
 import '../../../shared/presentation/widget/inc_dec_button.dart';
 import '../../../shared/presentation/widget/snack_bar_message.dart';
@@ -116,13 +118,23 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   TextButton(onPressed: (){
                                     Navigator.pushNamed(context, ReviewScreen.name, arguments: productModel.id);
                                   }, child: Text('Reviews')),
-                                  Container(
-                                    padding: .all(2),
-                                    decoration: BoxDecoration(
-                                      borderRadius: .circular(4),
-                                      color: AppColors.themeColor,
-                                    ),
-                                    child: Icon(Icons.favorite_outline,size: 18,color: Colors.white,),
+                                  Consumer<WishlistProvider>(
+                                    builder: (context, wishlistProvider, _) {
+                                      final bool isFavorite = wishlistProvider.isInWishlist(productModel.id);
+                                      return GestureDetector(
+                                        onTap: () => _onTapFavorite(context, wishlistProvider, productModel),
+                                        child: Container(
+                                          padding: .all(2),
+                                          decoration: BoxDecoration(
+                                            borderRadius: .circular(4),
+                                            color: isFavorite ? Colors.red : AppColors.themeColor,
+                                          ),
+                                          // isFavorite ? Icons.favorite : Icons.favorite_outline,
+                                          child: Icon(isFavorite ? Icons.favorite : Icons.favorite_outline,
+                                            size: 18,color: Colors.white,),
+                                        ),
+                                      );
+                                    }
                                   )
                                 ],
                               ),
@@ -191,6 +203,27 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _onTapFavorite(BuildContext context, WishlistProvider wishlistProvider, productDetails)async{
+    final bool isLoggedIn = await AuthController.isLoggedIn();
+    if(context.mounted == false) return;
+
+    if(isLoggedIn == false){
+      Navigator.pushNamed(context, SignInScreen.name);
+      return;
+    }
+
+    final ProductModel productModel = ProductModel(
+      id: productDetails.id,
+      title: productDetails.title,
+      photos: productDetails.photos,
+      price: productDetails.currentPrice,
+      rating: productDetails.rating,
+      quantity: productDetails.quantity,
+    );
+
+    wishlistProvider.toggleWishlist(productModel);
   }
 
   Future<void> _onTapAddToCart()async{

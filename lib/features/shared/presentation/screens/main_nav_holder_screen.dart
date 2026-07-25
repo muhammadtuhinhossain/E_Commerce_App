@@ -7,6 +7,7 @@ import '../../../category/presentation/provider/category_list_provider.dart';
 import '../../../category/presentation/screens/category_screen.dart';
 import '../../../home/presentation/providers/home_sliders_provider.dart';
 import '../../../home/presentation/screens/home_screen.dart';
+import '../../../wishlist/presentation/providers/wish_list_provider.dart';
 import '../../../wishlist/presentation/screens/wishlist_screen.dart';
 import '../provider/main_nav_holder_provider.dart';
 
@@ -37,6 +38,7 @@ class _MainNavHolderScreenState extends State<MainNavHolderScreen> {
     super.initState();
     _homeSlidersProvider.getSliders();
     _categoryListProvider.getCategoryData();
+    context.read<WishlistProvider>().refreshWishlist();
   }
 
   @override
