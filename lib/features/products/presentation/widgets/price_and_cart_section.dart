@@ -7,10 +7,11 @@ import '../../../app/app_colors.dart';
 import '../../../app/constants.dart';
 class PriceAndCartSection extends StatefulWidget {
   const PriceAndCartSection({
-    super.key, required this.onTapAddToCart,
+    super.key, required this.onTapAddToCart, required this.price,
   });
 
   final VoidCallback onTapAddToCart;
+  final int price;
 
   @override
   State<PriceAndCartSection> createState() => _PriceAndCartSectionState();
@@ -33,7 +34,7 @@ class _PriceAndCartSectionState extends State<PriceAndCartSection> {
             crossAxisAlignment: .start,
             children: [
               Text('Price', style: TextStyle(fontWeight: .w600),),
-              Text('${Constants.takaSign}100',style: TextStyle(fontWeight: .w600,fontSize: 18,color: AppColors.themeColor),),
+              Text('${Constants.takaSign}${widget.price}',style: TextStyle(fontWeight: .w600,fontSize: 18,color: AppColors.themeColor),),
             ],
           ),
           SizedBox(

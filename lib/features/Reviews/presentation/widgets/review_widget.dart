@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+
+import '../../data/models/review_model.dart';
+
 class ReviewWidget extends StatelessWidget {
   const ReviewWidget({
-    super.key,
+    super.key, required this.review,
   });
+
+  final ReviewModel review;
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +16,7 @@ class ReviewWidget extends StatelessWidget {
       child: Column(
         children: [
           Column(
+            crossAxisAlignment: .start,
             children: [
               Row(
                 spacing: 10,
@@ -21,11 +27,27 @@ class ReviewWidget extends StatelessWidget {
                     ),
                     child: Icon(Icons.person_outline_outlined,color: Colors.grey.shade500,size: 18,),
                   ),
-                  Text('Tuhin Hasan',style: TextStyle(fontSize: 18, fontWeight: .w500),),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: .start,
+                      children: [
+                        Text('${review.firstName} ${review.lastName}',style: TextStyle(fontSize: 18, fontWeight: .w500),),
+                        Row(
+                          children: List.generate(5, (index){
+                            return Icon(
+                              index < review.rating ? Icons.star : Icons.star_border,
+                              color: Colors.amber,
+                              size: 16,
+                            );
+                          }),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 12,),
-              Text('''There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,'''),
+              Text(review.comment),
             ],
           ),
           const SizedBox(height: 12,),

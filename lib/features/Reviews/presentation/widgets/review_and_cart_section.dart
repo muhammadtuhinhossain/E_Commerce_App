@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../../../app/app_colors.dart';
+import '../../../app/providers/auth_controller.dart';
 import '../../../auth/presentation/screens/sign_in_screen.dart';
+import '../screens/input_review_screen.dart';
 class ReviewAndCartSection extends StatelessWidget {
   const ReviewAndCartSection({
-    super.key,
+    super.key, required this.productId, required this.reviewCount, required this.onReviewAdded,
   });
+  final String productId;
+  final int reviewCount;
+  final VoidCallback onReviewAdded;
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +26,11 @@ class ReviewAndCartSection extends StatelessWidget {
           Column(
             crossAxisAlignment: .start,
             children: [
-              Text('Review  (1000)', style: TextStyle(fontWeight: .w600),),
+              Text('Review  ($reviewCount)', style: TextStyle(fontWeight: .w600),),
             ],
           ),
           FilledButton(
-            onPressed: () {
-              Navigator.pushNamed(context, SignInScreen.name);
-            },
+            onPressed: () => _onTapAddReview(context),
             style: FilledButton.styleFrom(
               shape: const CircleBorder(),
               fixedSize: const Size(50, 50),
@@ -38,5 +41,24 @@ class ReviewAndCartSection extends StatelessWidget {
         ],
       ),
     );
+  }
+  Future<void> _onTapAddReview(BuildContext context)async{
+    final bool isLoggedIn = await AuthController.isLoggedIn();
+    if(context.mounted == false) return;
+
+    if(isLoggedIn == false){
+      Navigator.pushNamed(context, SignInScreen.name);
+      return;
+    }
+
+    final isSuccess = await Navigator.pushNamed(
+      context,
+      InputReviewScreen.name,
+      arguments: productId,
+    );
+
+    if(isSuccess == true){
+      onReviewAdded();
+    }
   }
 }

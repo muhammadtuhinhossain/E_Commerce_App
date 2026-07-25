@@ -1,10 +1,16 @@
-import 'package:crafty_bay/features/Reviews/presentation/screens/review_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../../../app/extensions/localization_extension.dart';
+import '../../../shared/presentation/utils/validators.dart';
+import '../../../shared/presentation/widget/centered_progress_indicator.dart';
+import '../../../shared/presentation/widget/snack_bar_message.dart';
+import '../../data/models/add_review_params.dart';
+import '../provider/add_review_provider.dart';
 
 class InputReviewScreen extends StatefulWidget {
-  const InputReviewScreen({super.key});
+  const InputReviewScreen({super.key, required this.productId});
+
+  final String productId;
 
   static const String name='/input-review';
 
@@ -14,60 +20,71 @@ class InputReviewScreen extends StatefulWidget {
 
 class _InputReviewScreenState extends State<InputReviewScreen> {
 
-  final TextEditingController _firstNameTEController= TextEditingController();
-  final TextEditingController _lastNameTEController= TextEditingController();
-  final TextEditingController _descriptionTEController= TextEditingController();
-
+  final TextEditingController _commentTEController= TextEditingController();
   final GlobalKey<FormState> _formKey= GlobalKey<FormState>();
+  final AddReviewProvider _addReviewProvider = AddReviewProvider();
+
+  int _selectedRating = 5;
 
   @override
   Widget build(BuildContext context) {
-    final textTheme=TextTheme.of(context);
-    return Scaffold(
-      appBar: AppBar(title: Text('Create Review'),),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: SingleChildScrollView(
-            child: Form(
-              key: _formKey,
-              autovalidateMode: .onUserInteraction,
-              child: Column(
-                children: [
-                  SizedBox(height: 24,),
-                  TextFormField(
-                    controller: _firstNameTEController,
-                    textInputAction: .next,
-                    decoration: InputDecoration(
-                      hintText: context.localization.first_name,
-                      labelText: context.localization.first_name,
+    return ChangeNotifierProvider.value(
+      value: _addReviewProvider,
+      child: Scaffold(
+        appBar: AppBar(title: Text('Create Review'),),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: SingleChildScrollView(
+              child: Form(
+                key: _formKey,
+                autovalidateMode: .onUserInteraction,
+                child: Column(
+                  crossAxisAlignment: .start,
+                  children: [
+                    SizedBox(height: 12,),
+                    Text('Your Rating', style: TextStyle(fontWeight: .w500)),
+                    SizedBox(height: 4,),
+                    Row(
+                      children: List.generate(5, (index){
+                        return IconButton(
+                          onPressed: (){
+                            setState(() {
+                              _selectedRating = index + 1;
+                            });
+                          },
+                          icon: Icon(
+                            index < _selectedRating ? Icons.star : Icons.star_border,
+                            color: Colors.amber,
+                            size: 32,
+                          ),
+                        );
+                      }),
                     ),
-                  ),
-                  SizedBox(height: 12,),
-                  TextFormField(
-                    controller: _lastNameTEController,
-                    textInputAction: .next,
-                    decoration: InputDecoration(
-                      hintText: context.localization.last_name,
-                      labelText: context.localization.last_name,
+                    SizedBox(height: 8,),
+                    TextFormField(
+                      maxLines: 6,
+                      controller: _commentTEController,
+                      decoration: InputDecoration(
+                        hintText: 'Write your review',
+                        labelText: 'Review',
+                      ),
+                      validator: (input)=> Validators.validateInput(input, 'Please write a review'),
                     ),
-                  ),
-                  SizedBox(height: 12,),
-                  TextFormField(
-                    maxLines: 6,
-                    controller: _descriptionTEController,
-                    decoration: InputDecoration(
-                      hintText: context.localization.description,
-                      labelText: context.localization.description,
-                      contentPadding: .only(
-                        top: 30,
-                        left: 10,
-                      )
+                    SizedBox(height: 16,),
+                    Consumer<AddReviewProvider>(
+                        builder: (context,addReviewProvider,_) {
+                          if(addReviewProvider.isLoading){
+                            return CenteredProgressIndicator();
+                          }
+                          return SizedBox(
+                            width: double.infinity,
+                            child: FilledButton(onPressed: _onTapSubmitButton, child: Text('Submit')),
+                          );
+                        }
                     ),
-                  ),
-                  SizedBox(height: 16,),
-                  FilledButton(onPressed: _onTapSubmitButton, child: Text('Submit')),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -76,18 +93,26 @@ class _InputReviewScreenState extends State<InputReviewScreen> {
     );
   }
 
-  void _onTapSubmitButton(){
-    Navigator.pushNamed(context, ReviewScreen.name);
-  }
+  Future<void> _onTapSubmitButton()async{
+    if(_formKey.currentState!.validate() == false) return;
 
+    AddReviewParams params = AddReviewParams(
+      productId: widget.productId,
+      rating: _selectedRating,
+      comment: _commentTEController.text.trim(),
+    );
+
+    final bool isSuccess = await _addReviewProvider.addReview(params);
+    if(isSuccess && mounted){
+      Navigator.pop(context, true);
+    }else if(mounted){
+      showSnackBarMessage(context, _addReviewProvider.errorMessage!);
+    }
+  }
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    _commentTEController.dispose();
     super.dispose();
-    _firstNameTEController.dispose();
-    _lastNameTEController.dispose();
-    _descriptionTEController.dispose();
   }
 }
-

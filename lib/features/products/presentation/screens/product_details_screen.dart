@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../Reviews/presentation/provider/review_list_provider.dart';
 import '../../../Reviews/presentation/screens/review_screen.dart';
 import '../../../app/app_colors.dart';
 import '../../../app/providers/auth_controller.dart';
@@ -32,6 +33,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   final ProductDetailsProvider _productDetailsProvider = ProductDetailsProvider();
   final AddToCartProvider _addToCartProvider = AddToCartProvider();
+  final ReviewListProvider _reviewListProvider = ReviewListProvider();
+
   String? _selectedColor;
   String? _selectedSize;
   int _quantity = 1;
@@ -41,6 +44,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     // TODO: implement initState
     super.initState();
     _productDetailsProvider.getProductDetails(widget.productId);
+    _reviewListProvider.getReviewList(widget.productId);
   }
 
   @override
@@ -48,8 +52,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
     final textTheme = Theme.of(context).textTheme;
 
-    return ChangeNotifierProvider.value(
-      value: _productDetailsProvider,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: _productDetailsProvider),
+        ChangeNotifierProvider.value(value: _reviewListProvider),
+      ],
       child: Scaffold(
         appBar: AppBar(title: Text('Product Details'),),
         body: Consumer<ProductDetailsProvider>(
@@ -99,11 +106,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     spacing: 4,
                                     children: [
                                       Icon(Icons.star,color: Colors.amber,size: 20,),
-                                      Text("${productModel.rating}")
+                                      Consumer<ReviewListProvider>(
+                                        builder: (context, reviewListProvider, _) {
+                                          return Text(reviewListProvider.averageRating.toStringAsFixed(1));
+                                        }
+                                      )
                                     ],
                                   ),
                                   TextButton(onPressed: (){
-                                    Navigator.pushNamed(context, ReviewScreen.name);
+                                    Navigator.pushNamed(context, ReviewScreen.name, arguments: productModel.id);
                                   }, child: Text('Reviews')),
                                   Container(
                                     padding: .all(2),
@@ -171,6 +182,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     value: _addToCartProvider,
                     child: PriceAndCartSection(
                       onTapAddToCart: _onTapAddToCart,
+                      price: productModel.currentPrice,
                     ),
                 ),
               ],
