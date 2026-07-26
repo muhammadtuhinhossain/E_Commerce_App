@@ -49,9 +49,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     SizedBox(height: 60,),
                     AppLogo(width: 100,),
                     SizedBox(height: 10,),
-                    Text('Welcome Back',style: textTheme.titleLarge),
+                    Text(context.localization.welcomeBack,style: textTheme.titleLarge),
                     SizedBox(height: 6,),
-                    Text('sing in with email and password',style: textTheme.labelLarge,),
+                    Text(context.localization.signInSubtitle,style: textTheme.labelLarge,),
                     SizedBox(height: 24,),
                     TextFormField(
                       controller: _emailTEController,
@@ -81,7 +81,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         if(_signInProvider.signInProgress){
                           return CenteredProgressIndicator();
                         }
-                        return FilledButton(onPressed: _onTapSignInButton, child: Text('Sing-in'));
+                        return FilledButton(onPressed: _onTapSignInButton, child: Text(context.localization.signIn));
                       }
                     ),
                     SizedBox(height: 15,),
@@ -89,9 +89,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       text: TextSpan(
                         style: TextStyle(color: Colors.black54, fontSize: 14),
                         children: [
-                          TextSpan(text: "Don't have an account? "),
+                          TextSpan(text: context.localization.dontHaveAccount),
                           TextSpan(
-                            text: " Sign up",
+                            text: context.localization.signUp,
                             style: TextStyle(
                               color: AppColors.themeColor,
                               fontWeight: FontWeight.w500,

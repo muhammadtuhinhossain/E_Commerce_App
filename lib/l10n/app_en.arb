@@ -7,5 +7,54 @@
   "last_name": "Last Name",
   "city": "City",
   "phone": "Phone",
-  "description": "Write Review"
+  "description": "Write Review",
+  "home": "Home",
+
+  "welcomeBack": "Welcome Back",
+  "signInSubtitle": "Sign in with email and password",
+  "dontHaveAccount": "Don't have an account? ",
+  "signUp": "Sign up",
+
+  "createAccount": "Create an account",
+  "signUpSubtitle": "Sign up with your email and password",
+  "alreadyHaveAccount": "Already have an account? ",
+
+  "verifyOtpTitle": "Verify your OTP",
+  "verifyOtpSubtitle": "Enter the OTP that has been sent to your email address",
+  "verify": "Verify",
+  "resendOtp": "Resend OTP",
+  "resendOtpAfter": "Resend OTP after ",
+
+  "category": "Category",
+  "seeAll": "See All",
+  "popular": "Popular",
+  "special": "Special",
+  "newLabel": "New",
+
+  "cart": "Cart",
+  "totalPrice": "Total Price",
+  "checkout": "Checkout",
+
+  "wishlist": "Wishlist",
+
+  "productDetails": "Product Details",
+  "reviews": "Reviews",
+  "color": "Color",
+  "size": "Size",
+  "addToCart": "Add to Cart",
+  "price": "Price",
+  "addedToCart": "Added to cart",
+
+  "createReview": "Create Review",
+  "editReview": "Edit Review",
+  "submit": "Submit",
+  "update": "Update",
+  "yourRating": "Your Rating",
+  "writeYourReview": "Write your review",
+
+  "guest": "Guest",
+  "notLoggedIn": "Not logged in",
+  "logout": "Logout",
+  "login": "Login",
+  "language": "Language"
 }

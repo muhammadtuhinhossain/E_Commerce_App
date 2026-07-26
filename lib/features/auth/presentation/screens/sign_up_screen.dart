@@ -55,9 +55,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(height: 60,),
                     AppLogo(width: 100,),
                     SizedBox(height: 10,),
-                    Text('Create an account',style: textTheme.titleLarge),
+                    Text(context.localization.createAccount,style: textTheme.titleLarge),
                     SizedBox(height: 6,),
-                    Text('sing up with your email and password',style: textTheme.labelLarge,),
+                    Text(context.localization.signUpSubtitle,style: textTheme.labelLarge,),
                     SizedBox(height: 24,),
                     TextFormField(
                       controller: _emailTEController,
@@ -129,7 +129,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               backgroundColor: _enableButton == false ? Colors.grey : null,
                             ),
                             onPressed: _enableButton ? _onTapSignUpButton : null,
-                            child: Text('Sing-up'),
+                            child: Text(context.localization.signUp),
                         );
                       }
                     ),
@@ -138,9 +138,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       text: TextSpan(
                         style: TextStyle(color: Colors.black54, fontSize: 14),
                         children: [
-                          TextSpan(text: "Already have an account? "),
+                          TextSpan(text: context.localization.alreadyHaveAccount),
                           TextSpan(
-                            text: "Sign in",
+                            text: context.localization.signIn,
                             style: TextStyle(
                               color: AppColors.themeColor,
                               fontWeight: FontWeight.w500,

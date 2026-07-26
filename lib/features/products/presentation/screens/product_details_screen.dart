@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:crafty_bay/features/wishlist/presentation/providers/wish_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -60,7 +61,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         ChangeNotifierProvider.value(value: _reviewListProvider),
       ],
       child: Scaffold(
-        appBar: AppBar(title: Text('Product Details'),),
+        appBar: AppBar(title: Text(context.localization.productDetails),),
         body: Consumer<ProductDetailsProvider>(
           builder: (context ,_ ,_) {
             if(_productDetailsProvider.getProductDetailsInProgress){
@@ -117,7 +118,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   ),
                                   TextButton(onPressed: (){
                                     Navigator.pushNamed(context, ReviewScreen.name, arguments: productModel.id);
-                                  }, child: Text('Reviews')),
+                                  }, child: Text(context.localization.reviews)),
                                   Consumer<WishlistProvider>(
                                     builder: (context, wishlistProvider, _) {
                                       final bool isFavorite = wishlistProvider.isInWishlist(productModel.id);
@@ -129,7 +130,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                             borderRadius: .circular(4),
                                             color: isFavorite ? Colors.red : AppColors.themeColor,
                                           ),
-                                          // isFavorite ? Icons.favorite : Icons.favorite_outline,
                                           child: Icon(isFavorite ? Icons.favorite : Icons.favorite_outline,
                                             size: 18,color: Colors.white,),
                                         ),
@@ -144,7 +144,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 child: Column(
                                   crossAxisAlignment: .start,
                                   children: [
-                                    _selectedHeader('Color'),
+                                    _selectedHeader(context.localization.color),
                                     const SizedBox(height: 12,),
                                     ColorPicker(
                                       colors: productModel.colors,
@@ -163,7 +163,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 child: Column(
                                   crossAxisAlignment: .start,
                                   children: [
-                                    _selectedHeader('Size'),
+                                    _selectedHeader(context.localization.size),
                                     const SizedBox(height: 12,),
                                     SizePicker(
                                       sizes: productModel.sizes,
@@ -173,7 +173,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       },),
 
                                     const SizedBox(height: 16,),
-                                    _selectedHeader('Description'),
+                                    _selectedHeader(context.localization.description),
                                     const SizedBox(height: 12,),
                                   ],
                                 ),
@@ -239,7 +239,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
     final isSuccess = await _addToCartProvider.addToCart(params);
     if(isSuccess){
-      showSnackBarMessage(context, 'Add to cart');
+      showSnackBarMessage(context, context.localization.addedToCart);
     }else{
       showSnackBarMessage(context, _addToCartProvider.errorMessage!);
     }

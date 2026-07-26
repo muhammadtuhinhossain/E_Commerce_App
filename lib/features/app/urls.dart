@@ -19,6 +19,7 @@ class Urls {
 
   static String reviewListUrl(String productId) => '$_baseUrl/reviews?product=$productId';
   static const String createReviewUrl = '$_baseUrl/review';
+  static String updateReviewUrl(String reviewId) => '$_baseUrl/reviews/$reviewId';
 
   static const String addToWishlistUrl = '$_baseUrl/wishlist';
   static String removeFromWishlistUrl(String wishlistItemId) => '$_baseUrl/wishlist/$wishlistItemId';

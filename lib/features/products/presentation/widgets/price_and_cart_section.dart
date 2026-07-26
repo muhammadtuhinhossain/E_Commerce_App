@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:crafty_bay/features/cart/presentation/providers/add_to_cart_provider.dart';
 import 'package:crafty_bay/features/shared/presentation/widget/centered_progress_indicator.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class _PriceAndCartSectionState extends State<PriceAndCartSection> {
           Column(
             crossAxisAlignment: .start,
             children: [
-              Text('Price', style: TextStyle(fontWeight: .w600),),
+              Text(context.localization.price, style: TextStyle(fontWeight: .w600),),
               Text('${Constants.takaSign}${widget.price}',style: TextStyle(fontWeight: .w600,fontSize: 18,color: AppColors.themeColor),),
             ],
           ),
@@ -46,7 +47,7 @@ class _PriceAndCartSectionState extends State<PriceAndCartSection> {
                   }
                  return FilledButton(
                     onPressed: widget.onTapAddToCart,
-                    child: Text('Add to Cart'),
+                    child: Text(context.localization.addedToCart),
                   );
                 }
               )),

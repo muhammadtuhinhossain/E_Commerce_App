@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -40,7 +41,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
       onPopInvokedWithResult: (_, _)=>_backToHome(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Category'),
+          title: Text(context.localization.category),
           leading: IconButton(onPressed: _backToHome,
           icon: Icon(Icons.arrow_back_ios)),
         ),

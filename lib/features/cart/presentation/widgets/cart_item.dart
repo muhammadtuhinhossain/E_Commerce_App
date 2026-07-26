@@ -5,6 +5,7 @@ import '../../../app/app_colors.dart';
 import '../../../app/asset_path.dart';
 import '../../../app/constants.dart';
 import '../../../shared/presentation/widget/inc_dec_button.dart';
+import '../../../shared/presentation/widget/snack_bar_message.dart';
 import '../../data/models/cart_model.dart';
 import '../providers/cart_list_provider.dart';
 
@@ -46,8 +47,8 @@ class CartItem extends StatelessWidget {
                         ),
                       ),
                       IconButton(onPressed: (){
-                        //TODO: implement delete cart api
-                      }, icon: Icon(Icons.delete_outline)),
+                        _onTapDelete(context);
+                      }, icon: Icon(Icons.delete_outline,color: Colors.red.shade300,)),
                     ],
                   ),
                   Row(
@@ -80,5 +81,16 @@ class CartItem extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> _onTapDelete(BuildContext context)async{
+    final cartListProvider = context.read<CartListProvider>();
+    final bool isSuccess = await cartListProvider.deleteCartItem(cartItemModel.id);
+
+    if(context.mounted == false) return;
+
+    if(isSuccess == false){
+      showSnackBarMessage(context, cartListProvider.errorMessage ?? 'Failed to delete item');
+    }
   }
 }

@@ -7,5 +7,54 @@
   "last_name": "শেষ নাম",
   "city": "শহর",
   "phone": "ফোন নম্বর",
-  "description": "পর্যালোচনা লিখুন"
+  "description": "পর্যালোচনা লিখুন",
+  "home": "মূল পৃষ্ঠা",
+
+  "welcomeBack": "স্বাগতম",
+  "signInSubtitle": "ইমেইল ও পাসওয়ার্ড দিয়ে সাইন-ইন করুন",
+  "dontHaveAccount": "অ্যাকাউন্ট নেই? ",
+  "signUp": "সাইন আপ",
+
+  "createAccount": "অ্যাকাউন্ট তৈরি করুন",
+  "signUpSubtitle": "ইমেইল ও পাসওয়ার্ড দিয়ে সাইন আপ করুন",
+  "alreadyHaveAccount": "অ্যাকাউন্ট আছে? ",
+
+  "verifyOtpTitle": "আপনার ওটিপি যাচাই করুন",
+  "verifyOtpSubtitle": "আপনার ইমেইল ঠিকানায় পাঠানো ওটিপি লিখুন",
+  "verify": "যাচাই করুন",
+  "resendOtp": "ওটিপি পুনরায় পাঠান",
+  "resendOtpAfter": "পুনরায় পাঠান ",
+
+  "category": "বিভাগ",
+  "seeAll": "সব দেখুন",
+  "popular": "জনপ্রিয়",
+  "special": "বিশেষ",
+  "newLabel": "নতুন",
+
+  "cart": "কার্ট",
+  "totalPrice": "মোট মূল্য",
+  "checkout": "পেমেন্ট করুন",
+
+  "wishlist": "পছন্দের তালিকা",
+
+  "productDetails": "পণ্যের বিস্তারিত",
+  "reviews": "রিভিউ",
+  "color": "রঙ",
+  "size": "সাইজ",
+  "addToCart": "কার্টে যোগ করুন",
+  "price": "মূল্য",
+  "addedToCart": "কার্টে যোগ",
+
+  "createReview": "রিভিউ লিখুন",
+  "editReview": "রিভিউ সম্পাদনা করুন",
+  "submit": "জমা দিন",
+  "update": "আপডেট করুন",
+  "yourRating": "আপনার রেটিং",
+  "writeYourReview": "আপনার রিভিউ লিখুন",
+
+  "guest": "অতিথি",
+  "notLoggedIn": "লগইন করা নেই",
+  "logout": "লগআউট",
+  "login": "লগইন",
+  "language": "ভাষা"
 }

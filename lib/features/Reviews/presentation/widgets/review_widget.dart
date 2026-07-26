@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 
+import '../../../app/providers/auth_controller.dart';
 import '../../data/models/review_model.dart';
 
 class ReviewWidget extends StatelessWidget {
   const ReviewWidget({
-    super.key, required this.review,
+    super.key, required this.review, required this.onTapEdit,
   });
 
   final ReviewModel review;
+  final VoidCallback onTapEdit;
 
   @override
   Widget build(BuildContext context) {
+    final bool isMyReview = review.userId == AuthController.user?.id;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 4),
       child: Column(
@@ -44,6 +48,11 @@ class ReviewWidget extends StatelessWidget {
                       ],
                     ),
                   ),
+                  if(isMyReview)
+                    IconButton(
+                      onPressed: onTapEdit,
+                      icon: Icon(Icons.edit_outlined, size: 20),
+                    ),
                 ],
               ),
               const SizedBox(height: 12,),

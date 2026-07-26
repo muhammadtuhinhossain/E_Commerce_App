@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:flutter/material.dart';
 
 class SectionHeader extends StatelessWidget {
@@ -13,7 +14,7 @@ class SectionHeader extends StatelessWidget {
       mainAxisAlignment: .spaceBetween,
       children: [
         Text(headerText,style: textTheme.titleMedium),
-        TextButton(onPressed: onTapSeeAll, child: Text('See All',style: TextStyle(fontWeight: .w600),)),
+        TextButton(onPressed: onTapSeeAll, child: Text(context.localization.seeAll,style: TextStyle(fontWeight: .w600),)),
       ],
     );
   }

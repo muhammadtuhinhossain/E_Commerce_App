@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../app/app_colors.dart';
+import '../../../app/extensions/localization_extension.dart';
 import '../../../app/providers/auth_controller.dart';
+import '../../../app/providers/locale_provider.dart';
 import '../../../auth/presentation/screens/sign_in_screen.dart';
 import '../../../app/crafty_bay_app.dart';
 import '../screens/main_nav_holder_screen.dart';
@@ -39,12 +42,12 @@ Future<void> showProfileBottomSheet(BuildContext context) async {
                     children: [
                       const SizedBox(height: 6),
                       Text(
-                        user != null ? '${user.firstName} ${user.lastName}' : 'Guest',
+                        user != null ? '${user.firstName} ${user.lastName}' : context.localization.guest,
                         style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        user?.email ?? 'Not logged in',
+                        user?.email ?? context.localization.notLoggedIn,
                         style: TextStyle(color: Colors.grey.shade600),
                       ),
                     ],
@@ -65,7 +68,7 @@ Future<void> showProfileBottomSheet(BuildContext context) async {
                           Icon(Icons.login, color: AppColors.themeColor, size: 18),
                           const SizedBox(width: 4),
                           Text(
-                            'Login',
+                            context.localization.login,
                             style: TextStyle(
                               color: AppColors.themeColor,
                               fontWeight: FontWeight.w600,
@@ -77,21 +80,102 @@ Future<void> showProfileBottomSheet(BuildContext context) async {
                   ),
               ],
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 20),
+            const Divider(),
+            const SizedBox(height: 8),
+
+            InkWell(
+              onTap: () => _showLanguageOptions(context),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: Consumer<LocaleProvider>(
+                    builder: (context, localeProvider, _) {
+                      final bool isEnglish = localeProvider.currentLocale.languageCode == 'en';
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(Icons.language, color: AppColors.themeColor),
+                              const SizedBox(width: 12),
+                               Text(context.localization.language, style: TextStyle(fontSize: 16)),
+                            ],
+                          ),
+                          Text(
+                            isEnglish ? 'English' : 'বাংলা',
+                            style: TextStyle(color: Colors.grey.shade600),
+                          ),
+                        ],
+                      );
+                    }
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 16),
             SizedBox(
               width: double.infinity,
               child: FilledButton(
                 style: FilledButton.styleFrom(
-                  backgroundColor: isLoggedIn ? AppColors.themeColor : Colors.grey,
+                  backgroundColor: isLoggedIn ? Colors.red : Colors.grey,
                 ),
                 onPressed: () => _onTapLogout(context, isLoggedIn),
-                child: const Text('Logout'),
+                child: Text(context.localization.logout),
               ),
             ),
           ],
         ),
       );
     },
+  );
+}
+
+void _showLanguageOptions(BuildContext context){
+  showModalBottomSheet(
+    context: context,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+    ),
+    builder: (context) {
+      return Consumer<LocaleProvider>(
+          builder: (context, localeProvider, _) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _languageOption(
+                    context,
+                    label: 'English',
+                    isSelected: localeProvider.currentLocale.languageCode == 'en',
+                    onTap: (){
+                      localeProvider.changeLocale(Locale('en'));
+                      Navigator.pop(context);
+                    },
+                  ),
+                  _languageOption(
+                    context,
+                    label: 'বাংলা',
+                    isSelected: localeProvider.currentLocale.languageCode == 'bn',
+                    onTap: (){
+                      localeProvider.changeLocale(Locale('bn'));
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
+            );
+          }
+      );
+    },
+  );
+}
+
+Widget _languageOption(BuildContext context, {required String label, required bool isSelected, required VoidCallback onTap}){
+  return ListTile(
+    title: Text(label, style: const TextStyle(fontSize: 16)),
+    trailing: isSelected ? Icon(Icons.check, color: AppColors.themeColor) : null,
+    onTap: onTap,
   );
 }
 

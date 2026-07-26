@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
@@ -59,9 +60,9 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                     SizedBox(height: 60,),
                     AppLogo(width: 100,),
                     SizedBox(height: 10,),
-                    Text('Verify your OTP',style: textTheme.titleLarge),
+                    Text(context.localization.verifyOtpTitle,style: textTheme.titleLarge),
                     SizedBox(height: 6,),
-                    Text('Enter your otp that has been send to your email address',style: textTheme.labelLarge,),
+                    Text(context.localization.verifyOtpSubtitle,style: textTheme.labelLarge,),
                     SizedBox(height: 24,),
                     MaterialPinField(
                       length: 4,
@@ -79,7 +80,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                         if(_verifyOtpProvider.verifyOtInProgress){
                           return CenteredProgressIndicator();
                         }
-                        return FilledButton(onPressed: _onTapVerifyOtpButton, child: Text('Verify'));
+                        return FilledButton(onPressed: _onTapVerifyOtpButton, child: Text(context.localization.verify));
                       }
                     ),
                     SizedBox(height: 16,),
@@ -88,12 +89,12 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                         if (_otpTimerProvider.secondsLeft == 0) {
                           return TextButton(
                               onPressed: _onTapResendOTP, child: Text(
-                              "Resend OTP"));
+                              context.localization.resendOtp));
                         } else {
                           return RichText(text: TextSpan(
                               style: TextStyle(color: Colors.black),
                               children: [
-                                TextSpan(text: 'Resend OTP after '),
+                                TextSpan(text: context.localization.resendOtpAfter ),
                                 TextSpan(text:'${_otpTimerProvider.secondsLeft}s', style: TextStyle(color: AppColors.themeColor)),
                               ]
                           ));

@@ -34,4 +34,124 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get description => 'পর্যালোচনা লিখুন';
+
+  @override
+  String get home => 'মূল পৃষ্ঠা';
+
+  @override
+  String get welcomeBack => 'স্বাগতম';
+
+  @override
+  String get signInSubtitle => 'ইমেইল ও পাসওয়ার্ড দিয়ে সাইন-ইন করুন';
+
+  @override
+  String get dontHaveAccount => 'অ্যাকাউন্ট নেই? ';
+
+  @override
+  String get signUp => 'সাইন আপ';
+
+  @override
+  String get createAccount => 'অ্যাকাউন্ট তৈরি করুন';
+
+  @override
+  String get signUpSubtitle => 'ইমেইল ও পাসওয়ার্ড দিয়ে সাইন আপ করুন';
+
+  @override
+  String get alreadyHaveAccount => 'অ্যাকাউন্ট আছে? ';
+
+  @override
+  String get verifyOtpTitle => 'আপনার ওটিপি যাচাই করুন';
+
+  @override
+  String get verifyOtpSubtitle => 'আপনার ইমেইল ঠিকানায় পাঠানো ওটিপি লিখুন';
+
+  @override
+  String get verify => 'যাচাই করুন';
+
+  @override
+  String get resendOtp => 'ওটিপি পুনরায় পাঠান';
+
+  @override
+  String get resendOtpAfter => 'পুনরায় পাঠান ';
+
+  @override
+  String get category => 'বিভাগ';
+
+  @override
+  String get seeAll => 'সব দেখুন';
+
+  @override
+  String get popular => 'জনপ্রিয়';
+
+  @override
+  String get special => 'বিশেষ';
+
+  @override
+  String get newLabel => 'নতুন';
+
+  @override
+  String get cart => 'কার্ট';
+
+  @override
+  String get totalPrice => 'মোট মূল্য';
+
+  @override
+  String get checkout => 'পেমেন্ট করুন';
+
+  @override
+  String get wishlist => 'পছন্দের তালিকা';
+
+  @override
+  String get productDetails => 'পণ্যের বিস্তারিত';
+
+  @override
+  String get reviews => 'রিভিউ';
+
+  @override
+  String get color => 'রঙ';
+
+  @override
+  String get size => 'সাইজ';
+
+  @override
+  String get addToCart => 'কার্টে যোগ করুন';
+
+  @override
+  String get price => 'মূল্য';
+
+  @override
+  String get addedToCart => 'কার্টে যোগ';
+
+  @override
+  String get createReview => 'রিভিউ লিখুন';
+
+  @override
+  String get editReview => 'রিভিউ সম্পাদনা করুন';
+
+  @override
+  String get submit => 'জমা দিন';
+
+  @override
+  String get update => 'আপডেট করুন';
+
+  @override
+  String get yourRating => 'আপনার রেটিং';
+
+  @override
+  String get writeYourReview => 'আপনার রিভিউ লিখুন';
+
+  @override
+  String get guest => 'অতিথি';
+
+  @override
+  String get notLoggedIn => 'লগইন করা নেই';
+
+  @override
+  String get logout => 'লগআউট';
+
+  @override
+  String get login => 'লগইন';
+
+  @override
+  String get language => 'ভাষা';
 }

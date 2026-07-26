@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../Reviews/presentation/screens/edit_review_screen.dart';
 import '../Reviews/presentation/screens/input_review_screen.dart';
 import '../Reviews/presentation/screens/review_screen.dart';
 import '../auth/presentation/screens/sign_in_screen.dart';
@@ -43,6 +44,15 @@ class AppRoutes {
       case InputReviewScreen.name:
         final productId = settings.arguments as String;
         widget = InputReviewScreen(productId: productId);
+
+      case EditReviewScreen.name:
+        final args = settings.arguments as Map<String, dynamic>;
+        widget = EditReviewScreen(
+          reviewId: args['reviewId'],
+          currentRating: args['rating'],
+          currentComment: args['comment'],
+        );
+
     }
     return MaterialPageRoute(builder: (ctx)=> widget);
   }

@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -60,10 +61,10 @@ class _MainNavHolderScreenState extends State<MainNavHolderScreen> {
                 onTap: mainNavHolderProvider.changeIndex,
 
                 items: [
-                  BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),
-                  BottomNavigationBarItem(icon: Icon(Icons.dashboard),label: 'Category'),
-                  BottomNavigationBarItem(icon: Icon(Icons.shopping_basket_outlined),label: 'Carts'),
-                  BottomNavigationBarItem(icon: Icon(Icons.favorite_outline),label: 'WishList'),
+                  BottomNavigationBarItem(icon: Icon(Icons.home),label: context.localization.home),
+                  BottomNavigationBarItem(icon: Icon(Icons.dashboard),label: context.localization.category),
+                  BottomNavigationBarItem(icon: Icon(Icons.shopping_basket_outlined),label: context.localization.cart),
+                  BottomNavigationBarItem(icon: Icon(Icons.favorite_outline),label: context.localization.wishlist),
                 ]),
           );
         }

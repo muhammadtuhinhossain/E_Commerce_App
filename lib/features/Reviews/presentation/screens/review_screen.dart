@@ -1,10 +1,13 @@
+import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:crafty_bay/features/shared/presentation/widget/centered_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../data/models/review_model.dart';
 import '../provider/review_list_provider.dart';
 import '../widgets/review_and_cart_section.dart';
 import '../widgets/review_widget.dart';
+import 'edit_review_screen.dart';
 
 class ReviewScreen extends StatefulWidget {
   const ReviewScreen({super.key, required this.productId});
@@ -32,7 +35,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
     return ChangeNotifierProvider.value(
       value: _reviewListProvider,
       child: Scaffold(
-        appBar: AppBar(title: Text('Reviews'),),
+        appBar: AppBar(title: Text(context.localization.reviews),),
           body: Consumer<ReviewListProvider>(
             builder: (context, reviewListProvider, _) {
               if(reviewListProvider.isLoading){
@@ -44,14 +47,18 @@ class _ReviewScreenState extends State<ReviewScreen> {
               return Column(
                 children: [
                   Expanded(
-                    child: reviewListProvider.reviewList.isEmpty 
-                        ? Center(child: Text('No reviews yet')) 
+                    child: reviewListProvider.reviewList.isEmpty
+                        ? Center(child: Text('No reviews yet'))
                         : Padding(
                       padding: const EdgeInsets.all(16),
                       child: ListView.builder(
                         itemCount: reviewListProvider.reviewList.length,
                         itemBuilder: (context, index) {
-                          return ReviewWidget(review: reviewListProvider.reviewList[index],);
+                          final review = reviewListProvider.reviewList[index];
+                          return ReviewWidget(
+                            review: review,
+                              onTapEdit: () => _onTapEditReview(context, review),
+                          );
                         },
                       ),
                     ),
@@ -67,6 +74,21 @@ class _ReviewScreenState extends State<ReviewScreen> {
           ),
       ),
     );
+  }
+  Future<void> _onTapEditReview(BuildContext context, ReviewModel review)async{
+    final isSuccess = await Navigator.pushNamed(
+      context,
+      EditReviewScreen.name,
+      arguments: {
+        'reviewId': review.id,
+        'rating': review.rating,
+        'comment': review.comment,
+      },
+    );
+
+    if(isSuccess == true){
+      _reviewListProvider.getReviewList(widget.productId);
+    }
   }
 }
 

@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +32,7 @@ class _CartScreenState extends State<CartScreen> {
       child: PopScope(
         onPopInvokedWithResult: (_,_)=> _backToHome(),
         child: Scaffold(
-          appBar: AppBar(title: Text('Cart'),
+          appBar: AppBar(title: Text(context.localization.cart),
           leading: IconButton(onPressed: _backToHome, icon: Icon(Icons.arrow_back_ios)),
           ),
           body: Consumer<CartListProvider>(

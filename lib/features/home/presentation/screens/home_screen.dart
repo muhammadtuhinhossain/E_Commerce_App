@@ -1,3 +1,4 @@
+import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -44,12 +45,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
               ),
 
-              SectionHeader(headerText: 'Category', onTapSeeAll: () {
+              SectionHeader(headerText: context.localization.category, onTapSeeAll: () {
                 context.read<MainNavHolderProvider>().navigateToCategory();
               }),
 
               HomeCategorySection(),
-              SectionHeader(headerText: 'Popular', onTapSeeAll: () {}
+              SectionHeader(headerText: context.localization.popular, onTapSeeAll: () {}
               ),
 
               SingleChildScrollView(
@@ -59,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              SectionHeader(headerText: 'Special', onTapSeeAll: () {}
+              SectionHeader(headerText: context.localization.special, onTapSeeAll: () {}
               ),
 
               SingleChildScrollView(
@@ -69,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              SectionHeader(headerText: 'New', onTapSeeAll: () {}
+              SectionHeader(headerText: context.localization.newLabel, onTapSeeAll: () {}
               ),
 
               SingleChildScrollView(
