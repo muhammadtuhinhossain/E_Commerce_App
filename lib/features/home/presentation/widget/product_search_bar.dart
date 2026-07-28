@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class ProductSearchBar extends StatefulWidget {
   const ProductSearchBar({super.key});
 

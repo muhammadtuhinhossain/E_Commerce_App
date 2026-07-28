@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../Reviews/presentation/screens/edit_review_screen.dart';
-import '../Reviews/presentation/screens/input_review_screen.dart';
-import '../Reviews/presentation/screens/review_screen.dart';
-import '../auth/presentation/screens/sign_in_screen.dart';
-import '../auth/presentation/screens/sign_up_screen.dart';
-import '../auth/presentation/screens/splash_screen.dart';
-import '../auth/presentation/screens/verify_otp_screen.dart';
-import '../products/presentation/screens/product_details_screen.dart';
-import '../products/presentation/screens/product_list_by_category_screen.dart';
-import '../shared/presentation/screens/main_nav_holder_screen.dart';
+import '../features/Reviews/presentation/screens/edit_review_screen.dart';
+import '../features/Reviews/presentation/screens/input_review_screen.dart';
+import '../features/Reviews/presentation/screens/review_screen.dart';
+import '../features/auth/presentation/screens/sign_in_screen.dart';
+import '../features/auth/presentation/screens/sign_up_screen.dart';
+import '../features/auth/presentation/screens/splash_screen.dart';
+import '../features/auth/presentation/screens/verify_otp_screen.dart';
+import '../features/products/presentation/screens/product_details_screen.dart';
+import '../features/products/presentation/screens/product_list_by_category_screen.dart';
+import '../features/shared/presentation/screens/main_nav_holder_screen.dart';
+
+
 
 
 class AppRoutes {

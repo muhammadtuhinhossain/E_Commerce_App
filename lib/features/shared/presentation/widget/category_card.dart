@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../app/app_colors.dart';
+import '../../../../app/app_colors.dart';
 import '../../../category/data/models/category_model.dart';
 import '../../../products/presentation/screens/product_list_by_category_screen.dart';
 

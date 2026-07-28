@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../app/providers/auth_controller.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../../../app/providers/auth_controller.dart';
 import '../../../shared/presentation/screens/main_nav_holder_screen.dart';
 import '../widgets/app_logo.dart';
 

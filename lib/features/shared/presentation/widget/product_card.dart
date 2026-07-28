@@ -2,13 +2,14 @@ import 'package:crafty_bay/features/wishlist/presentation/providers/wish_list_pr
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../app/app_colors.dart';
-import '../../../app/asset_path.dart';
-import '../../../app/constants.dart';
-import '../../../app/providers/auth_controller.dart';
+import '../../../../app/app_colors.dart';
+import '../../../../app/asset_path.dart';
+import '../../../../app/constants.dart';
+import '../../../../app/providers/auth_controller.dart';
 import '../../../auth/presentation/screens/sign_in_screen.dart';
 import '../../data/models/product_model.dart';
 import '../../../products/presentation/screens/product_details_screen.dart';
+
 class ProductCard extends StatelessWidget {
   const ProductCard({super.key, required this.productModel,});
 

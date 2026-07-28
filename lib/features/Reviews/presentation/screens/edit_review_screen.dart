@@ -1,7 +1,7 @@
-import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../app/extensions/localization_extension.dart';
 import '../../../shared/presentation/widget/centered_progress_indicator.dart';
 import '../../../shared/presentation/widget/snack_bar_message.dart';
 import '../../../shared/presentation/utils/validators.dart';

@@ -1,8 +1,8 @@
-import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../app/app_colors.dart';
+import '../../../../app/app_colors.dart';
+import '../../../../app/extensions/localization_extension.dart';
 import '../../../cart/presentation/screens/cart_screen.dart';
 import '../../../category/presentation/provider/category_list_provider.dart';
 import '../../../category/presentation/screens/category_screen.dart';
@@ -39,7 +39,9 @@ class _MainNavHolderScreenState extends State<MainNavHolderScreen> {
     super.initState();
     _homeSlidersProvider.getSliders();
     _categoryListProvider.getCategoryData();
-    context.read<WishlistProvider>().refreshWishlist();
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      context.read<WishlistProvider>().refreshWishlist();
+    });
   }
 
   @override

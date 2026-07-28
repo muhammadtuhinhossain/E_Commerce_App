@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../app/get_network_caller.dart';
+import '../../../../app/providers/auth_controller.dart';
+import '../../../../app/urls.dart';
 import '../../../../core/service/network_caller.dart';
-import '../../../app/get_network_caller.dart';
-import '../../../app/providers/auth_controller.dart';
-import '../../../app/urls.dart';
 import '../../data/models/cart_model.dart';
 
 class CartListProvider extends ChangeNotifier{

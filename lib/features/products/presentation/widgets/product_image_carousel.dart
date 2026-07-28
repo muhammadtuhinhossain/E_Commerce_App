@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:crafty_bay/features/app/app_colors.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../app/app_colors.dart';
 
 class ProductImageCarousel extends StatefulWidget {
   const ProductImageCarousel({super.key, required this.photos});

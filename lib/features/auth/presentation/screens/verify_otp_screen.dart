@@ -1,9 +1,9 @@
-import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 
-import '../../../app/app_colors.dart';
+import '../../../../app/app_colors.dart';
+import '../../../../app/extensions/localization_extension.dart';
 import '../../../shared/presentation/screens/main_nav_holder_screen.dart';
 import '../../../shared/presentation/widget/centered_progress_indicator.dart';
 import '../../../shared/presentation/widget/snack_bar_message.dart';

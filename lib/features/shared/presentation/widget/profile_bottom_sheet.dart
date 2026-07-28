@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../app/app_colors.dart';
-import '../../../app/extensions/localization_extension.dart';
-import '../../../app/providers/auth_controller.dart';
-import '../../../app/providers/locale_provider.dart';
+import '../../../../app/app_colors.dart';
+import '../../../../app/crafty_bay_app.dart';
+import '../../../../app/extensions/localization_extension.dart';
+import '../../../../app/providers/auth_controller.dart';
+import '../../../../app/providers/locale_provider.dart';
 import '../../../auth/presentation/screens/sign_in_screen.dart';
-import '../../../app/crafty_bay_app.dart';
 import '../screens/main_nav_holder_screen.dart';
 
 Future<void> showProfileBottomSheet(BuildContext context) async {
@@ -148,18 +148,22 @@ void _showLanguageOptions(BuildContext context){
                     context,
                     label: 'English',
                     isSelected: localeProvider.currentLocale.languageCode == 'en',
-                    onTap: (){
-                      localeProvider.changeLocale(Locale('en'));
-                      Navigator.pop(context);
+                    onTap: ()async{
+                      await localeProvider.changeLocale(Locale('en'));
+                      if(context.mounted){
+                        Navigator.pop(context);
+                      }
                     },
                   ),
                   _languageOption(
                     context,
                     label: 'বাংলা',
                     isSelected: localeProvider.currentLocale.languageCode == 'bn',
-                    onTap: (){
-                      localeProvider.changeLocale(Locale('bn'));
-                      Navigator.pop(context);
+                    onTap: ()async{
+                      await localeProvider.changeLocale(Locale('bn'));
+                      if(context.mounted){
+                        Navigator.pop(context);
+                      }
                     },
                   ),
                 ],

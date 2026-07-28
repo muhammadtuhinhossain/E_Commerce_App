@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../app/get_network_caller.dart';
+import '../../../../app/urls.dart';
 import '../../../../core/service/network_caller.dart';
-import '../../../app/get_network_caller.dart';
-import '../../../app/urls.dart';
 import '../../data/models/slider_model.dart';
 
 class HomeSlidersProvider extends ChangeNotifier{

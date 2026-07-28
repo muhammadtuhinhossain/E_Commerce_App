@@ -3,8 +3,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../app/app_colors.dart';
-import '../../../app/extensions/localization_extension.dart';
+import '../../../../app/app_colors.dart';
+import '../../../../app/extensions/localization_extension.dart';
 import '../../../shared/presentation/screens/main_nav_holder_screen.dart';
 import '../../../shared/presentation/utils/validators.dart';
 import '../../../shared/presentation/widget/centered_progress_indicator.dart';

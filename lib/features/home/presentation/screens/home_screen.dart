@@ -1,10 +1,9 @@
-import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../app/extensions/localization_extension.dart';
 import '../../../shared/presentation/provider/main_nav_holder_provider.dart';
 import '../../../shared/presentation/widget/centered_progress_indicator.dart';
-import '../../../shared/presentation/widget/product_card.dart';
 import '../providers/home_sliders_provider.dart';
 import '../widget/home_app_bar.dart';
 import '../widget/home_carousel_slider.dart';

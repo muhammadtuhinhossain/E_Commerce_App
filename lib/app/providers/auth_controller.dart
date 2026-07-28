@@ -3,7 +3,8 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../auth/data/models/user_model.dart';
+import '../../features/auth/data/models/user_model.dart';
+
 
 class AuthController {
 

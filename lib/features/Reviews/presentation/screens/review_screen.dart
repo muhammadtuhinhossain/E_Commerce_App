@@ -1,8 +1,8 @@
-import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:crafty_bay/features/shared/presentation/widget/centered_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../app/extensions/localization_extension.dart';
 import '../../data/models/review_model.dart';
 import '../provider/review_list_provider.dart';
 import '../widgets/review_and_cart_section.dart';

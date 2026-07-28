@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../app/providers/auth_controller.dart';
+import '../../../../app/providers/auth_controller.dart';
 import '../../data/models/review_model.dart';
 
 class ReviewWidget extends StatelessWidget {

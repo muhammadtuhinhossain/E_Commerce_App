@@ -1,12 +1,12 @@
-import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:crafty_bay/features/wishlist/presentation/providers/wish_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../app/app_colors.dart';
+import '../../../../app/extensions/localization_extension.dart';
+import '../../../../app/providers/auth_controller.dart';
 import '../../../Reviews/presentation/provider/review_list_provider.dart';
 import '../../../Reviews/presentation/screens/review_screen.dart';
-import '../../../app/app_colors.dart';
-import '../../../app/providers/auth_controller.dart';
 import '../../../auth/presentation/screens/sign_in_screen.dart';
 import '../../../cart/data/models/add_to_cart_params.dart';
 import '../../../cart/presentation/providers/add_to_cart_provider.dart';

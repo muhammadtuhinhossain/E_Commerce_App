@@ -1,11 +1,12 @@
-import 'package:crafty_bay/features/app/extensions/localization_extension.dart';
 import 'package:crafty_bay/features/cart/presentation/providers/add_to_cart_provider.dart';
 import 'package:crafty_bay/features/shared/presentation/widget/centered_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../app/app_colors.dart';
-import '../../../app/constants.dart';
+import '../../../../app/app_colors.dart';
+import '../../../../app/constants.dart';
+import '../../../../app/extensions/localization_extension.dart';
+
 class PriceAndCartSection extends StatefulWidget {
   const PriceAndCartSection({
     super.key, required this.onTapAddToCart, required this.price,
