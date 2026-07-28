@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../app/get_network_caller.dart';
 import '../../../../app/urls.dart';
-import '../../../../core/service/network_caller.dart';
+import '../../../../core/service/network_caller/network_caller.dart';
 import '../../data/models/add_to_cart_params.dart';
 
 class AddToCartProvider extends ChangeNotifier{

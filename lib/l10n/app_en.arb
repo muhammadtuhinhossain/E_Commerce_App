@@ -56,5 +56,10 @@
   "notLoggedIn": "Not logged in",
   "logout": "Logout",
   "login": "Login",
-  "language": "Language"
+  "language": "Language",
+
+  "theme": "Theme",
+  "system": "System",
+  "light": "Light",
+  "dark": "Dark"
 }

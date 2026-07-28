@@ -19,7 +19,6 @@ class CartItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
       margin: .symmetric(horizontal: 16, vertical: 4),
       child: Row(
         children: [
@@ -40,9 +39,10 @@ class CartItem extends StatelessWidget {
                           crossAxisAlignment: .start,
                           children: [
                             Text( cartItemModel.product.title,
-                              style: TextStyle(fontSize: 16),),
+                              style: TextStyle(fontSize: 16, color: Theme.of(context).textTheme.bodyLarge?.color),),
+
                             Text('Color: ${cartItemModel.color ?? ''}    Size: ${cartItemModel.size ?? ''}',
-                              style: TextStyle(color: Colors.black54),),
+                              style: TextStyle(color: Theme.of(context).textTheme.labelLarge?.color),),
                           ],
                         ),
                       ),

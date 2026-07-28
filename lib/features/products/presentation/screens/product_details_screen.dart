@@ -89,8 +89,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 children: [
                                   Expanded(child:
                                   Text(productModel.title,
-                                  style: textTheme.titleMedium?.copyWith(fontSize: 18, color: Colors.black54),
-                                  )),
+                                    style: textTheme.titleMedium?.copyWith(fontSize: 18, color: textTheme.labelLarge?.color),
+                                  ),
+                                  ),
                                   SizedBox(
                                       width: 90,
                                       child: IncDecButton(
@@ -144,7 +145,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 child: Column(
                                   crossAxisAlignment: .start,
                                   children: [
-                                    _selectedHeader(context.localization.color),
+                                    _selectedHeader(context, context.localization.color),
                                     const SizedBox(height: 12,),
                                     ColorPicker(
                                       colors: productModel.colors,
@@ -163,7 +164,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 child: Column(
                                   crossAxisAlignment: .start,
                                   children: [
-                                    _selectedHeader(context.localization.size),
+                                    _selectedHeader(context, context.localization.size),
                                     const SizedBox(height: 12,),
                                     SizePicker(
                                       sizes: productModel.sizes,
@@ -173,14 +174,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       },),
 
                                     const SizedBox(height: 16,),
-                                    _selectedHeader(context.localization.description),
+                                    _selectedHeader(context, context.localization.description),
                                     const SizedBox(height: 12,),
                                   ],
                                 ),
                               ),
 
                               Text(productModel.description,
-                                style: TextStyle(color: Colors.black54),
+                                style: TextStyle(color: textTheme.labelLarge?.color),
                               ),
                             ],
                           ),
@@ -245,10 +246,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     }
   }
 
-  Widget _selectedHeader(String header){
+  Widget _selectedHeader(BuildContext context, String header){
     return Text( header,
       style: TextStyle(
-          color: Colors.black54,
+          color: Theme.of(context).textTheme.labelLarge?.color,
           fontSize: 18,
           fontWeight: .w500
       ),);

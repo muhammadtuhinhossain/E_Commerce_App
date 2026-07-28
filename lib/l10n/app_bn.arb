@@ -56,5 +56,10 @@
   "notLoggedIn": "লগইন করা নেই",
   "logout": "লগআউট",
   "login": "লগইন",
-  "language": "ভাষা"
+  "language": "ভাষা",
+
+  "theme": "থিম",
+  "system": "সিস্টেম",
+  "light": "লাইট",
+  "dark": "ডার্ক"
 }

@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
 
 class AppTheme {
-
   static ThemeData get lightTheme => _lightThemeData;
+
   static ThemeData get darkTheme => _darkThemeData;
 
   static final ThemeData _lightThemeData = ThemeData(
@@ -13,33 +12,97 @@ class AppTheme {
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: AppColors.themeColor,
     ),
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: AppColors.lightScaffoldBackground,
+    cardColor: AppColors.lightCardBackground,
+    textTheme: const TextTheme(
+      titleLarge: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+        color: AppColors.lightPrimaryText,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: AppColors.lightPrimaryText,
+      ),
+      labelLarge: TextStyle(
+        color: AppColors.lightSecondaryText,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
     inputDecorationTheme: _inputDecorationTheme,
     filledButtonTheme: _filledButtonTheme,
-    appBarTheme: AppBarTheme(backgroundColor: Colors.white,
-      titleTextStyle: TextStyle(fontSize: 16,color: Colors.black,fontWeight: .w600),),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppColors.lightScaffoldBackground,
+      elevation: 0,
+      titleTextStyle: TextStyle(
+        fontSize: 16,
+        color: AppColors.lightPrimaryText,
+        fontWeight: FontWeight.w600,
+      ),
+    ),
+
+    cardTheme: CardThemeData(
+      color: AppColors.lightCardBackground,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+        side: BorderSide(color: AppColors.lightCardBorder, width: 1),
+      ),
+    ),
   );
 
   static final ThemeData _darkThemeData = ThemeData(
     colorSchemeSeed: AppColors.themeColor,
-    brightness: Brightness.light,
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: AppColors.darkScaffoldBackground,
+    cardColor: AppColors.darkCardBackground,
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: AppColors.themeColor,
     ),
     inputDecorationTheme: _inputDecorationTheme,
+    textTheme: const TextTheme(
+      titleLarge: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+        color: AppColors.darkPrimaryText,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: AppColors.darkPrimaryText,
+      ),
+      labelLarge: TextStyle(
+        color: AppColors.darkSecondaryText,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppColors.darkScaffoldBackground,
+      elevation: 0,
+      titleTextStyle: TextStyle(
+        fontSize: 16,
+        color: AppColors.darkPrimaryText,
+        fontWeight: FontWeight.w600,
+      ),
+    ),
     filledButtonTheme: _filledButtonTheme,
 
-    textTheme: TextTheme(
-      titleLarge: TextStyle(fontSize: 24,fontWeight: FontWeight.w600),
-      labelLarge: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400),
-      titleMedium: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+    cardTheme: CardThemeData(
+      color: AppColors.darkCardBackground,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+        side: BorderSide(color: AppColors.darkCardBorder, width: 1),
+      ),
     ),
   );
 
-  static final InputDecorationTheme _inputDecorationTheme = InputDecorationTheme(
+  static final InputDecorationTheme _inputDecorationTheme =
+  InputDecorationTheme(
     contentPadding: .only(left: 12),
     border: OutlineInputBorder(
-      borderSide: BorderSide(color: AppColors.themeColor,width: 12),
+      borderSide: BorderSide(color: AppColors.themeColor, width: 2),
     ),
     enabledBorder: OutlineInputBorder(
       borderSide: BorderSide(color: AppColors.themeColor, width: 2),
@@ -52,7 +115,7 @@ class AppTheme {
     ),
   );
 
-  static final FilledButtonThemeData _filledButtonTheme=FilledButtonThemeData(
+  static final FilledButtonThemeData _filledButtonTheme = FilledButtonThemeData(
     style: FilledButton.styleFrom(
       backgroundColor: AppColors.themeColor,
       fixedSize: Size.fromWidth(double.maxFinite),

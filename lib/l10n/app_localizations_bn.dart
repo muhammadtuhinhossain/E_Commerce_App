@@ -154,4 +154,16 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get language => 'ভাষা';
+
+  @override
+  String get theme => 'থিম';
+
+  @override
+  String get system => 'সিস্টেম';
+
+  @override
+  String get light => 'লাইট';
+
+  @override
+  String get dark => 'ডার্ক';
 }

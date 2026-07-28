@@ -66,7 +66,7 @@ class _HomeCarouselSliderState extends State<HomeCarouselSlider> {
                   decoration: BoxDecoration(
                     border: Border.all(
                       width: 1,
-                      color: Colors.orangeAccent,
+                      color: AppColors.themeColor,
                     ),
                     borderRadius: .circular(10),
                     color: i == index ? AppColors.themeColor : Colors.grey.shade300,

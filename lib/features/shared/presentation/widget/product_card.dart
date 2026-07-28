@@ -25,10 +25,6 @@ class ProductCard extends StatelessWidget {
         Navigator.pushNamed(context, ProductDetailsScreen.name, arguments: productModel.id);
       },
       child: Card(
-        shape: RoundedRectangleBorder(borderRadius: .circular(8)),
-        color: Colors.white,
-        shadowColor: AppColors.themeColor.withAlpha(40),
-        elevation: 2,
         child: SizedBox(
           width: 150,
           child: Column(
@@ -51,7 +47,9 @@ class ProductCard extends StatelessWidget {
                   spacing: 4,
                   crossAxisAlignment: .start,
                   children: [
-                    Text(productModel.title,style: TextStyle(fontWeight: .w600,color: Colors.black54),),
+                    Text(productModel.title,style: TextStyle(
+                        fontWeight: .w600,
+                        color: Theme.of(context).textTheme.labelLarge?.color),),
                     Row(
                       mainAxisAlignment: .spaceBetween,
                       children: [

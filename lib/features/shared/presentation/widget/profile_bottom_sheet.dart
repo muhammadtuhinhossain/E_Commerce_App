@@ -6,6 +6,7 @@ import '../../../../app/crafty_bay_app.dart';
 import '../../../../app/extensions/localization_extension.dart';
 import '../../../../app/providers/auth_controller.dart';
 import '../../../../app/providers/locale_provider.dart';
+import '../../../../app/providers/theme_mode_provider.dart';
 import '../../../auth/presentation/screens/sign_in_screen.dart';
 import '../screens/main_nav_holder_screen.dart';
 
@@ -82,6 +83,34 @@ Future<void> showProfileBottomSheet(BuildContext context) async {
             ),
             const SizedBox(height: 20),
             const Divider(),
+
+            InkWell(
+              onTap: () => _showThemeOptions(context),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: Consumer<ThemeModeProvider>(
+                  builder: (context, themeModeProvider, _) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.dark_mode_outlined, color: AppColors.themeColor),
+                            const SizedBox(width: 12),
+                            Text(context.localization.theme, style: TextStyle(fontSize: 16)),
+                          ],
+                        ),
+                        Text(
+                          _themeModeLabel(themeModeProvider.themeMode),
+                          style: TextStyle(color: Colors.grey.shade600),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+            ),
+
             const SizedBox(height: 8),
 
             InkWell(
@@ -130,6 +159,67 @@ Future<void> showProfileBottomSheet(BuildContext context) async {
   );
 }
 
+void _showThemeOptions(BuildContext context){
+  showModalBottomSheet(
+    context: context,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+    ),
+    builder: (context) {
+      return Consumer<ThemeModeProvider>(
+          builder: (context, themeModeProvider, _) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _selectableOption(
+                    context,
+                    label: context.localization.system,
+                    isSelected: themeModeProvider.themeMode == ThemeMode.system,
+                    onTap: (){
+                      themeModeProvider.changeThemeMode(ThemeMode.system);
+                      Navigator.pop(context);
+                    },
+                  ),
+                  _selectableOption(
+                    context,
+                    label: context.localization.light,
+                    isSelected: themeModeProvider.themeMode == ThemeMode.light,
+                    onTap: (){
+                      themeModeProvider.changeThemeMode(ThemeMode.light);
+                      Navigator.pop(context);
+                    },
+                  ),
+                  _selectableOption(
+                    context,
+                    label: context.localization.dark,
+                    isSelected: themeModeProvider.themeMode == ThemeMode.dark,
+                    onTap: (){
+                      themeModeProvider.changeThemeMode(ThemeMode.dark);
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
+            );
+          }
+      );
+    },
+  );
+}
+
+String _themeModeLabel(ThemeMode mode){
+  switch(mode){
+    case ThemeMode.light:
+      return 'Light';
+    case ThemeMode.dark:
+      return 'Dark';
+    case ThemeMode.system:
+      return 'System';
+  }
+}
+
 void _showLanguageOptions(BuildContext context){
   showModalBottomSheet(
     context: context,
@@ -144,7 +234,7 @@ void _showLanguageOptions(BuildContext context){
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  _languageOption(
+                  _selectableOption(
                     context,
                     label: 'English',
                     isSelected: localeProvider.currentLocale.languageCode == 'en',
@@ -155,7 +245,7 @@ void _showLanguageOptions(BuildContext context){
                       }
                     },
                   ),
-                  _languageOption(
+                  _selectableOption(
                     context,
                     label: 'বাংলা',
                     isSelected: localeProvider.currentLocale.languageCode == 'bn',
@@ -174,8 +264,16 @@ void _showLanguageOptions(BuildContext context){
     },
   );
 }
+//
+// Widget _languageOption(BuildContext context, {required String label, required bool isSelected, required VoidCallback onTap}){
+//   return ListTile(
+//     title: Text(label, style: const TextStyle(fontSize: 16)),
+//     trailing: isSelected ? Icon(Icons.check, color: AppColors.themeColor) : null,
+//     onTap: onTap,
+//   );
+// }
 
-Widget _languageOption(BuildContext context, {required String label, required bool isSelected, required VoidCallback onTap}){
+Widget _selectableOption(BuildContext context, {required String label, required bool isSelected, required VoidCallback onTap}){
   return ListTile(
     title: Text(label, style: const TextStyle(fontSize: 16)),
     trailing: isSelected ? Icon(Icons.check, color: AppColors.themeColor) : null,
