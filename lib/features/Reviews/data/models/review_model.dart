@@ -29,7 +29,7 @@ class ReviewModel {
     final product = json['product'] ?? {};
     final user = json['user'] ?? {};
     return ReviewModel(
-      id: json['_id'],
+      id: json['_id'] ?? '',
       productId: product['_id'] ?? '',
       productTitle: product['title'] ?? '',
       productPhotos: List<String>.from(product['photos'] ?? []),
@@ -37,9 +37,9 @@ class ReviewModel {
       firstName: user['first_name'] ?? '',
       lastName: user['last_name'] ?? '',
       avatarUrl: user['avatar_url'],
-      rating: json['rating'],
-      comment: json['comment'],
-      createdAt: json['createdAt'],
+      rating: json['rating'] ?? 0,
+      comment: json['comment'] ?? '',
+      createdAt: json['createdAt'] ?? '',
     );
   }
 }

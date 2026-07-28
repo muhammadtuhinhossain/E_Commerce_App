@@ -24,19 +24,25 @@ class ReviewListProvider extends ChangeNotifier{
       Urls.reviewListUrl(productId),
     );
 
-    if(response.isSuccess){
-      _reviewList = response.body['data']['results']
-          .map<ReviewModel>((item)=> ReviewModel.fromJson(item))
-          .toList();
-      isSuccess = true;
-      _errorMessage = null;
-    }else{
-      _errorMessage = response.errorMessage;
+    try {
+      if(response.isSuccess){
+        _reviewList = response.body['data']['results']
+            .map<ReviewModel>((item)=> ReviewModel.fromJson(item))
+            .toList();
+        isSuccess = true;
+        _errorMessage = null;
+      }else{
+        _errorMessage = response.errorMessage;
+      }
+    } catch (e) {
+      _errorMessage = 'Something went wrong while loading reviews';
     }
+
     _isLoading = false;
     notifyListeners();
     return isSuccess;
   }
+
   double get averageRating {
     if(_reviewList.isEmpty) return 0;
     double total = 0;
