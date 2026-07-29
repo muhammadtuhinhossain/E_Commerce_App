@@ -130,16 +130,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get editReview => 'Edit Review';
 
   @override
+  String get yourRating => 'Your Rating';
+
+  @override
+  String get review => 'Review';
+
+  @override
+  String get writeYourReview => 'Write your review';
+
+  @override
   String get submit => 'Submit';
 
   @override
   String get update => 'Update';
 
   @override
-  String get yourRating => 'Your Rating';
-
-  @override
-  String get writeYourReview => 'Write your review';
+  String get pleaseWriteAReview => 'Please write a review';
 
   @override
   String get guest => 'Guest';

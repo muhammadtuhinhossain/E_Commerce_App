@@ -1,5 +1,6 @@
 import 'package:crafty_bay/features/wishlist/presentation/providers/wish_list_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../app/app_colors.dart';
@@ -53,7 +54,7 @@ class ProductCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: .spaceBetween,
                       children: [
-                        Text('${Constants.takaSign}${productModel.price}',
+                        Text('${Constants.takaSign}${NumberFormat.decimalPattern(Localizations.localeOf(context).languageCode).format(productModel.price)}',
                           style: textTheme.bodyLarge?.copyWith(fontWeight: .w600,color: AppColors.themeColor),
                           overflow: TextOverflow.ellipsis,
                         ),

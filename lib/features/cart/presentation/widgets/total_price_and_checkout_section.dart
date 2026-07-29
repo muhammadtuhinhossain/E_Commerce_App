@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../app/app_colors.dart';
@@ -26,8 +27,9 @@ class TotalPriceAndCheckoutSection extends StatelessWidget {
             crossAxisAlignment: .start,
             children: [
               Text(context.localization.totalPrice, style: TextStyle(fontWeight: .w600),),
-              Text('${Constants.takaSign} ${context.read<CartListProvider>().totalPrice}',
-                style: TextStyle(fontWeight: .w600,fontSize: 18,color: AppColors.themeColor),),
+              Text('${Constants.takaSign} ${NumberFormat.decimalPattern(Localizations.localeOf(context).languageCode).format(context.read<CartListProvider>().totalPrice)}',
+                style: TextStyle(fontWeight: .w600,fontSize: 18,color: AppColors.themeColor),
+              ),
             ],
           ),
           SizedBox(

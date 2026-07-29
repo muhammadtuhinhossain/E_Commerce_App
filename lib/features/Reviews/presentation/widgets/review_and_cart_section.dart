@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../app/app_colors.dart';
+import '../../../../app/extensions/localization_extension.dart';
 import '../../../../app/providers/auth_controller.dart';
 import '../../../auth/presentation/screens/sign_in_screen.dart';
 import '../screens/input_review_screen.dart';
@@ -27,7 +29,10 @@ class ReviewAndCartSection extends StatelessWidget {
           Column(
             crossAxisAlignment: .start,
             children: [
-              Text('Review  ($reviewCount)', style: TextStyle(fontWeight: .w600),),
+              Text(
+                '${context.localization.reviews} (${NumberFormat.decimalPattern(Localizations.localeOf(context).languageCode).format(reviewCount)})',
+                style: TextStyle(fontWeight: .w600),
+              ),
             ],
           ),
           FilledButton(

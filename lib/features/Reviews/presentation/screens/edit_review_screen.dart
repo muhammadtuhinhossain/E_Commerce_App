@@ -17,7 +17,7 @@ class EditReviewScreen extends StatefulWidget {
   });
 
   final String reviewId;
-  final int currentRating;
+  final num currentRating;
   final String currentComment;
 
   static const String name = '/edit-review';
@@ -37,7 +37,7 @@ class _EditReviewScreenState extends State<EditReviewScreen> {
   @override
   void initState() {
     super.initState();
-    _selectedRating = widget.currentRating;
+    _selectedRating = widget.currentRating.round();
     _commentTEController.text = widget.currentComment;
   }
 
@@ -83,8 +83,9 @@ class _EditReviewScreenState extends State<EditReviewScreen> {
                       decoration: InputDecoration(
                         hintText: context.localization.writeYourReview,
                         labelText: context.localization.reviews,
+                        contentPadding: const EdgeInsets.fromLTRB(12, 40, 12, 12),
                       ),
-                      validator: (input)=> Validators.validateInput(input, 'Please write a review'),
+                      validator: (input)=> Validators.validateInput(input, context.localization.pleaseWriteAReview),
                     ),
                     SizedBox(height: 16,),
                     Consumer<UpdateReviewProvider>(

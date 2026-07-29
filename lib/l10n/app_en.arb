@@ -47,10 +47,12 @@
 
   "createReview": "Create Review",
   "editReview": "Edit Review",
+  "yourRating": "Your Rating",
+  "review": "Review",
+  "writeYourReview": "Write your review",
   "submit": "Submit",
   "update": "Update",
-  "yourRating": "Your Rating",
-  "writeYourReview": "Write your review",
+  "pleaseWriteAReview": "Please write a review",
 
   "guest": "Guest",
   "notLoggedIn": "Not logged in",

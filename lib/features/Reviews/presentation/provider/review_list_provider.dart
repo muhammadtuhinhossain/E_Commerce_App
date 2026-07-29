@@ -28,6 +28,8 @@ class ReviewListProvider extends ChangeNotifier{
       if(response.isSuccess){
         _reviewList = response.body['data']['results']
             .map<ReviewModel>((item)=> ReviewModel.fromJson(item))
+        //Individual reviews for each product
+            //.where((review) => review.productId == productId)
             .toList();
         isSuccess = true;
         _errorMessage = null;

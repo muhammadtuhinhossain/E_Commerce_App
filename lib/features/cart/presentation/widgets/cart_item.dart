@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../app/app_colors.dart';
@@ -41,8 +42,11 @@ class CartItem extends StatelessWidget {
                             Text( cartItemModel.product.title,
                               style: TextStyle(fontSize: 16, color: Theme.of(context).textTheme.bodyLarge?.color),),
 
-                            Text('Color: ${cartItemModel.color ?? ''}    Size: ${cartItemModel.size ?? ''}',
-                              style: TextStyle(color: Theme.of(context).textTheme.labelLarge?.color),),
+                            Visibility(
+                              visible: _hasVariant,
+                              child: Text(_variantText,
+                                style: TextStyle(color: Theme.of(context).textTheme.labelLarge?.color),),
+                            ),
                           ],
                         ),
                       ),
@@ -54,7 +58,7 @@ class CartItem extends StatelessWidget {
                   Row(
                     mainAxisAlignment: .spaceBetween,
                     children: [
-                      Text('${Constants.takaSign} ${cartItemModel.product.price}',
+                      Text('${Constants.takaSign} ${NumberFormat.decimalPattern(Localizations.localeOf(context).languageCode).format(cartItemModel.product.price)}',
                         style: TextStyle(fontWeight: .w600,
                             fontSize: 18, color: AppColors.themeColor),
                       ),
@@ -81,6 +85,18 @@ class CartItem extends StatelessWidget {
         ],
       ),
     );
+  }
+  bool get _hasVariant => cartItemModel.color != null || cartItemModel.size != null;
+
+  String get _variantText{
+    final List<String> parts = [];
+    if(cartItemModel.color != null){
+      parts.add('Color: ${cartItemModel.color}');
+    }
+    if(cartItemModel.size != null){
+      parts.add('Size: ${cartItemModel.size}');
+    }
+    return parts.join('    ');
   }
 
   Future<void> _onTapDelete(BuildContext context)async{

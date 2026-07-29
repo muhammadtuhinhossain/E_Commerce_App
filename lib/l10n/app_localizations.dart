@@ -338,6 +338,24 @@ abstract class AppLocalizations {
   /// **'Edit Review'**
   String get editReview;
 
+  /// No description provided for @yourRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Rating'**
+  String get yourRating;
+
+  /// No description provided for @review.
+  ///
+  /// In en, this message translates to:
+  /// **'Review'**
+  String get review;
+
+  /// No description provided for @writeYourReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Write your review'**
+  String get writeYourReview;
+
   /// No description provided for @submit.
   ///
   /// In en, this message translates to:
@@ -350,17 +368,11 @@ abstract class AppLocalizations {
   /// **'Update'**
   String get update;
 
-  /// No description provided for @yourRating.
+  /// No description provided for @pleaseWriteAReview.
   ///
   /// In en, this message translates to:
-  /// **'Your Rating'**
-  String get yourRating;
-
-  /// No description provided for @writeYourReview.
-  ///
-  /// In en, this message translates to:
-  /// **'Write your review'**
-  String get writeYourReview;
+  /// **'Please write a review'**
+  String get pleaseWriteAReview;
 
   /// No description provided for @guest.
   ///

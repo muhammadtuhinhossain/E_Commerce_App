@@ -105,7 +105,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get productDetails => 'পণ্যের বিস্তারিত';
 
   @override
-  String get reviews => 'রিভিউ';
+  String get reviews => 'মতামত';
 
   @override
   String get color => 'রঙ';
@@ -129,16 +129,22 @@ class AppLocalizationsBn extends AppLocalizations {
   String get editReview => 'রিভিউ সম্পাদনা করুন';
 
   @override
+  String get yourRating => 'আপনার মূল্যায়ন';
+
+  @override
+  String get review => 'মতামত';
+
+  @override
+  String get writeYourReview => 'আপনার মতামত লিখুন';
+
+  @override
   String get submit => 'জমা দিন';
 
   @override
   String get update => 'আপডেট করুন';
 
   @override
-  String get yourRating => 'আপনার রেটিং';
-
-  @override
-  String get writeYourReview => 'আপনার রিভিউ লিখুন';
+  String get pleaseWriteAReview => 'অনুগ্রহ করে একটি মতামত লিখুন';
 
   @override
   String get guest => 'অতিথি';

@@ -264,14 +264,6 @@ void _showLanguageOptions(BuildContext context){
     },
   );
 }
-//
-// Widget _languageOption(BuildContext context, {required String label, required bool isSelected, required VoidCallback onTap}){
-//   return ListTile(
-//     title: Text(label, style: const TextStyle(fontSize: 16)),
-//     trailing: isSelected ? Icon(Icons.check, color: AppColors.themeColor) : null,
-//     onTap: onTap,
-//   );
-// }
 
 Widget _selectableOption(BuildContext context, {required String label, required bool isSelected, required VoidCallback onTap}){
   return ListTile(

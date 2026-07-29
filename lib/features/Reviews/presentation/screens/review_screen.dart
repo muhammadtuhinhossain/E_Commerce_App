@@ -79,11 +79,11 @@ class _ReviewScreenState extends State<ReviewScreen> {
     final isSuccess = await Navigator.pushNamed(
       context,
       EditReviewScreen.name,
-      arguments: {
-        'reviewId': review.id,
-        'rating': review.rating,
-        'comment': review.comment,
-      },
+        arguments: {
+          'reviewId': review.id,
+          'rating': review.rating,
+          'comment': review.comment,
+        },
     );
 
     if(isSuccess == true){

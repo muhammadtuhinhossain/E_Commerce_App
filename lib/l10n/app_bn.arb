@@ -38,7 +38,7 @@
   "wishlist": "পছন্দের তালিকা",
 
   "productDetails": "পণ্যের বিস্তারিত",
-  "reviews": "রিভিউ",
+  "reviews": "মতামত",
   "color": "রঙ",
   "size": "সাইজ",
   "addToCart": "কার্টে যোগ করুন",
@@ -47,10 +47,12 @@
 
   "createReview": "রিভিউ লিখুন",
   "editReview": "রিভিউ সম্পাদনা করুন",
+  "yourRating": "আপনার মূল্যায়ন",
+  "review": "মতামত",
+  "writeYourReview": "আপনার মতামত লিখুন",
   "submit": "জমা দিন",
   "update": "আপডেট করুন",
-  "yourRating": "আপনার রেটিং",
-  "writeYourReview": "আপনার রিভিউ লিখুন",
+  "pleaseWriteAReview": "অনুগ্রহ করে একটি মতামত লিখুন",
 
   "guest": "অতিথি",
   "notLoggedIn": "লগইন করা নেই",

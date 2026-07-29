@@ -7,7 +7,7 @@ class ReviewModel {
   final String firstName;
   final String lastName;
   final String? avatarUrl;
-  final int rating;
+  final double rating;
   final String comment;
   final String createdAt;
 
@@ -37,7 +37,7 @@ class ReviewModel {
       firstName: user['first_name'] ?? '',
       lastName: user['last_name'] ?? '',
       avatarUrl: user['avatar_url'],
-      rating: json['rating'] ?? 0,
+      rating: (json['rating'] ?? 0).toDouble(),
       comment: json['comment'] ?? '',
       createdAt: json['createdAt'] ?? '',
     );

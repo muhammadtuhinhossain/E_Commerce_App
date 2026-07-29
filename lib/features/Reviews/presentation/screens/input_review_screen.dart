@@ -44,7 +44,7 @@ class _InputReviewScreenState extends State<InputReviewScreen> {
                   crossAxisAlignment: .start,
                   children: [
                     SizedBox(height: 12,),
-                    Text('Your Rating', style: TextStyle(fontWeight: .w500)),
+                    Text(context.localization.yourRating, style: TextStyle(fontWeight: .w500)),
                     SizedBox(height: 4,),
                     Row(
                       children: List.generate(5, (index){
@@ -67,8 +67,9 @@ class _InputReviewScreenState extends State<InputReviewScreen> {
                       maxLines: 6,
                       controller: _commentTEController,
                       decoration: InputDecoration(
-                        hintText: 'Write your review',
-                        labelText: 'Review',
+                        hintText: context.localization.writeYourReview,
+                        labelText: context.localization.review,
+                        contentPadding: const EdgeInsets.fromLTRB(12, 40, 12, 12),
                       ),
                       validator: (input)=> Validators.validateInput(input, 'Please write a review'),
                     ),

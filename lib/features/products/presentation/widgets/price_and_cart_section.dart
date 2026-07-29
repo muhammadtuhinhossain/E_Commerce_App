@@ -1,6 +1,7 @@
 import 'package:crafty_bay/features/cart/presentation/providers/add_to_cart_provider.dart';
 import 'package:crafty_bay/features/shared/presentation/widget/centered_progress_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../app/app_colors.dart';
@@ -36,7 +37,10 @@ class _PriceAndCartSectionState extends State<PriceAndCartSection> {
             crossAxisAlignment: .start,
             children: [
               Text(context.localization.price, style: TextStyle(fontWeight: .w600),),
-              Text('${Constants.takaSign}${widget.price}',style: TextStyle(fontWeight: .w600,fontSize: 18,color: AppColors.themeColor),),
+              Text(
+                '${Constants.takaSign}${NumberFormat.decimalPattern(Localizations.localeOf(context).languageCode).format(widget.price)}',
+                style: TextStyle(fontWeight: .w600,fontSize: 18,color: AppColors.themeColor),
+              ),
             ],
           ),
           SizedBox(
