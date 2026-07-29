@@ -9,6 +9,7 @@
   "phone": "ফোন নম্বর",
   "description": "পর্যালোচনা লিখুন",
   "home": "মূল পৃষ্ঠা",
+  "somethingWentWrong": "কিছু একটা সমস্যা হয়েছে",
 
   "welcomeBack": "স্বাগতম",
   "signInSubtitle": "ইমেইল ও পাসওয়ার্ড দিয়ে সাইন-ইন করুন",
@@ -25,6 +26,15 @@
   "resendOtp": "ওটিপি পুনরায় পাঠান",
   "resendOtpAfter": "পুনরায় পাঠান ",
 
+  "enterFirstName": "আপনার নামের প্রথম অংশ লিখুন",
+  "enterLastName": "আপনার নামের শেষ অংশ লিখুন",
+  "enterCity": "আপনার শহর লিখুন",
+  "enterPhone": "আপনার ফোন নম্বর লিখুন",
+
+  "enterAValidEmailAddress": "একটি সঠিক ইমেইল ঠিকানা লিখুন",
+  "enterAPasswordMoreThanFive": "৫ অক্ষরের বেশি পাসওয়ার্ড লিখুন",
+  "confirmPasswordDoesNotMatch": "কনফার্ম পাসওয়ার্ড মিলছে না!",
+
   "category": "বিভাগ",
   "seeAll": "সব দেখুন",
   "popular": "জনপ্রিয়",
@@ -34,6 +44,7 @@
   "cart": "কার্ট",
   "totalPrice": "মোট মূল্য",
   "checkout": "পেমেন্ট করুন",
+  "failedToDeleteItem": "আইটেম মুছতে ব্যর্থ হয়েছে",
 
   "wishlist": "পছন্দের তালিকা",
 
@@ -41,9 +52,9 @@
   "reviews": "মতামত",
   "color": "রঙ",
   "size": "সাইজ",
-  "addToCart": "কার্টে যোগ করুন",
+  "addToCart": "যোগ করুন",
   "price": "মূল্য",
-  "addedToCart": "কার্টে যোগ",
+  "addedToCart": "কার্টে যোগ হয়েছে",
 
   "createReview": "রিভিউ লিখুন",
   "editReview": "রিভিউ সম্পাদনা করুন",
@@ -53,6 +64,7 @@
   "submit": "জমা দিন",
   "update": "আপডেট করুন",
   "pleaseWriteAReview": "অনুগ্রহ করে একটি মতামত লিখুন",
+  "noReviewsYet": "এখনও কোনো মতামত নেই",
 
   "guest": "অতিথি",
   "notLoggedIn": "লগইন করা নেই",

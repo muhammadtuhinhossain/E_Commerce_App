@@ -71,7 +71,7 @@ class _InputReviewScreenState extends State<InputReviewScreen> {
                         labelText: context.localization.review,
                         contentPadding: const EdgeInsets.fromLTRB(12, 40, 12, 12),
                       ),
-                      validator: (input)=> Validators.validateInput(input, 'Please write a review'),
+                      validator: (input)=> Validators.validateInput(input, context.localization.pleaseWriteAReview),
                     ),
                     SizedBox(height: 16,),
                     Consumer<AddReviewProvider>(

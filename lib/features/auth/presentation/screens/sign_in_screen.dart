@@ -61,7 +61,7 @@ class _SignInScreenState extends State<SignInScreen> {
                        hintText: context.localization.email,
                         labelText: context.localization.email,
                       ),
-                      validator: (String? value)=> Validators.validateEmail(value),
+                      validator: (String? value)=> Validators.validateEmail(value, context),
                     ),
                     SizedBox(height: 8,),
                     TextFormField(
@@ -73,7 +73,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         hintText: context.localization.password,
                         labelText: context.localization.password,
                       ),
-                      validator: (input)=> Validators.validatePassword(input),
+                      validator: (input)=> Validators.validatePassword(input, context),
                     ),
                     SizedBox(height: 16,),
                     Consumer<SignInProvider>(
@@ -87,14 +87,17 @@ class _SignInScreenState extends State<SignInScreen> {
                     SizedBox(height: 15,),
                     RichText(
                       text: TextSpan(
-                        style: TextStyle(color: Colors.black54, fontSize: 14),
+                        style: TextStyle(
+                          color: Theme.of(context).textTheme.bodyMedium?.color ?? Colors.black54,
+                          fontSize: 14,
+                        ),
                         children: [
                           TextSpan(text: context.localization.dontHaveAccount),
                           TextSpan(
                             text: context.localization.signUp,
                             style: TextStyle(
                               color: AppColors.themeColor,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                             ),
                             recognizer: TapGestureRecognizer()..onTap = _onTapSignUpButton,
                           ),

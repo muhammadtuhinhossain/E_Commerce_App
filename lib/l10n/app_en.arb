@@ -9,6 +9,7 @@
   "phone": "Phone",
   "description": "Write Review",
   "home": "Home",
+  "somethingWentWrong": "Something went wrong",
 
   "welcomeBack": "Welcome Back",
   "signInSubtitle": "Sign in with email and password",
@@ -25,6 +26,15 @@
   "resendOtp": "Resend OTP",
   "resendOtpAfter": "Resend OTP after ",
 
+  "enterFirstName": "Please enter your first name",
+  "enterLastName": "Please enter your last name",
+  "enterCity": "Please enter your city",
+  "enterPhone": "Please enter your phone number",
+
+  "enterAValidEmailAddress": "Enter a valid Email address",
+  "enterAPasswordMoreThanFive": "Enter a password more than 5 letter",
+  "confirmPasswordDoesNotMatch": "Confirm password does not match!",
+
   "category": "Category",
   "seeAll": "See All",
   "popular": "Popular",
@@ -34,6 +44,7 @@
   "cart": "Cart",
   "totalPrice": "Total Price",
   "checkout": "Checkout",
+  "failedToDeleteItem": "Failed to delete item",
 
   "wishlist": "Wishlist",
 
@@ -53,6 +64,7 @@
   "submit": "Submit",
   "update": "Update",
   "pleaseWriteAReview": "Please write a review",
+  "noReviewsYet": "No reviews yet",
 
   "guest": "Guest",
   "notLoggedIn": "Not logged in",

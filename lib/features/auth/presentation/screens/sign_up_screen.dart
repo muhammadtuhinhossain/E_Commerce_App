@@ -67,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: context.localization.email,
                         labelText: context.localization.email,
                       ),
-                      validator: (String? value)=> Validators.validateEmail(value),
+                      validator: (String? value)=> Validators.validateEmail(value, context),
                     ),
                     SizedBox(height: 8,),
                     TextFormField(
@@ -76,7 +76,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: context.localization.first_name,
                         labelText: context.localization.last_name,
                       ),
-                      validator: (input)=> Validators.validatePassword(input),
+                      validator: (input)=> Validators.validateInput(input, context.localization.enterFirstName),
                     ),
                     SizedBox(height: 8,),
                     TextFormField(
@@ -85,7 +85,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: context.localization.last_name,
                         labelText: context.localization.last_name,
                       ),
-                      validator: (input)=> Validators.validatePassword(input),
+                      validator: (input)=> Validators.validateInput(input, context.localization.enterLastName),
                     ),
                     SizedBox(height: 8,),
                     TextFormField(
@@ -94,7 +94,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: context.localization.city,
                         labelText: context.localization.city,
                       ),
-                      validator: (input)=> Validators.validatePassword(input),
+                      validator: (input)=> Validators.validateInput(input, context.localization.enterCity),
                     ),
                     SizedBox(height: 8,),
                     TextFormField(
@@ -104,7 +104,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: context.localization.phone,
                         labelText: context.localization.phone,
                       ),
-                      validator: (input)=> Validators.validatePassword(input),
+                      validator: (input)=> Validators.validateInput(input, context.localization.enterPhone),
                     ),
                     SizedBox(height: 8,),
                     TextFormField(
@@ -116,7 +116,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: context.localization.password,
                         labelText: context.localization.password,
                       ),
-                      validator: (input)=> Validators.validatePassword(input),
+                      validator: (input)=> Validators.validatePassword(input, context),
                     ),
                     SizedBox(height: 16,),
                     Consumer<SignUpProvider>(
@@ -136,14 +136,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(height: 15,),
                     RichText(
                       text: TextSpan(
-                        style: TextStyle(color: Colors.black54, fontSize: 14),
+                        style: TextStyle(
+                          color: Theme.of(context).textTheme.bodyMedium?.color ?? Colors.black54,
+                          fontSize: 14,
+                        ),
                         children: [
                           TextSpan(text: context.localization.alreadyHaveAccount),
                           TextSpan(
                             text: context.localization.signIn,
                             style: TextStyle(
                               color: AppColors.themeColor,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                             ),
                             recognizer: TapGestureRecognizer()..onTap = _onTapSignInButton,
                           ),

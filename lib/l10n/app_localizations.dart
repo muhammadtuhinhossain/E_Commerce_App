@@ -158,6 +158,12 @@ abstract class AppLocalizations {
   /// **'Home'**
   String get home;
 
+  /// No description provided for @somethingWentWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get somethingWentWrong;
+
   /// No description provided for @welcomeBack.
   ///
   /// In en, this message translates to:
@@ -230,6 +236,48 @@ abstract class AppLocalizations {
   /// **'Resend OTP after '**
   String get resendOtpAfter;
 
+  /// No description provided for @enterFirstName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your first name'**
+  String get enterFirstName;
+
+  /// No description provided for @enterLastName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your last name'**
+  String get enterLastName;
+
+  /// No description provided for @enterCity.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your city'**
+  String get enterCity;
+
+  /// No description provided for @enterPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your phone number'**
+  String get enterPhone;
+
+  /// No description provided for @enterAValidEmailAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid Email address'**
+  String get enterAValidEmailAddress;
+
+  /// No description provided for @enterAPasswordMoreThanFive.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a password more than 5 letter'**
+  String get enterAPasswordMoreThanFive;
+
+  /// No description provided for @confirmPasswordDoesNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm password does not match!'**
+  String get confirmPasswordDoesNotMatch;
+
   /// No description provided for @category.
   ///
   /// In en, this message translates to:
@@ -277,6 +325,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Checkout'**
   String get checkout;
+
+  /// No description provided for @failedToDeleteItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to delete item'**
+  String get failedToDeleteItem;
 
   /// No description provided for @wishlist.
   ///
@@ -373,6 +427,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please write a review'**
   String get pleaseWriteAReview;
+
+  /// No description provided for @noReviewsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No reviews yet'**
+  String get noReviewsYet;
 
   /// No description provided for @guest.
   ///

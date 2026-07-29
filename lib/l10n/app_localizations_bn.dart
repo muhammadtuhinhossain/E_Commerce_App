@@ -39,6 +39,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get home => 'মূল পৃষ্ঠা';
 
   @override
+  String get somethingWentWrong => 'কিছু একটা সমস্যা হয়েছে';
+
+  @override
   String get welcomeBack => 'স্বাগতম';
 
   @override
@@ -75,6 +78,27 @@ class AppLocalizationsBn extends AppLocalizations {
   String get resendOtpAfter => 'পুনরায় পাঠান ';
 
   @override
+  String get enterFirstName => 'আপনার নামের প্রথম অংশ লিখুন';
+
+  @override
+  String get enterLastName => 'আপনার নামের শেষ অংশ লিখুন';
+
+  @override
+  String get enterCity => 'আপনার শহর লিখুন';
+
+  @override
+  String get enterPhone => 'আপনার ফোন নম্বর লিখুন';
+
+  @override
+  String get enterAValidEmailAddress => 'একটি সঠিক ইমেইল ঠিকানা লিখুন';
+
+  @override
+  String get enterAPasswordMoreThanFive => '৫ অক্ষরের বেশি পাসওয়ার্ড লিখুন';
+
+  @override
+  String get confirmPasswordDoesNotMatch => 'কনফার্ম পাসওয়ার্ড মিলছে না!';
+
+  @override
   String get category => 'বিভাগ';
 
   @override
@@ -99,6 +123,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get checkout => 'পেমেন্ট করুন';
 
   @override
+  String get failedToDeleteItem => 'আইটেম মুছতে ব্যর্থ হয়েছে';
+
+  @override
   String get wishlist => 'পছন্দের তালিকা';
 
   @override
@@ -114,13 +141,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get size => 'সাইজ';
 
   @override
-  String get addToCart => 'কার্টে যোগ করুন';
+  String get addToCart => 'যোগ করুন';
 
   @override
   String get price => 'মূল্য';
 
   @override
-  String get addedToCart => 'কার্টে যোগ';
+  String get addedToCart => 'কার্টে যোগ হয়েছে';
 
   @override
   String get createReview => 'রিভিউ লিখুন';
@@ -145,6 +172,9 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get pleaseWriteAReview => 'অনুগ্রহ করে একটি মতামত লিখুন';
+
+  @override
+  String get noReviewsYet => 'এখনও কোনো মতামত নেই';
 
   @override
   String get guest => 'অতিথি';

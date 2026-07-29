@@ -48,7 +48,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
                 children: [
                   Expanded(
                     child: reviewListProvider.reviewList.isEmpty
-                        ? Center(child: Text('No reviews yet'))
+                        ? Center(child: Text(context.localization.noReviewsYet))
                         : Padding(
                       padding: const EdgeInsets.all(16),
                       child: ListView.builder(

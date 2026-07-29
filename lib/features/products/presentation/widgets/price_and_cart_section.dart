@@ -52,10 +52,11 @@ class _PriceAndCartSectionState extends State<PriceAndCartSection> {
                   }
                  return FilledButton(
                     onPressed: widget.onTapAddToCart,
-                    child: Text(context.localization.addedToCart),
+                    child: Text(context.localization.addToCart),
                   );
                 }
-              )),
+              ),
+          ),
         ],
       ),
     );

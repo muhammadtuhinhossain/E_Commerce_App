@@ -39,6 +39,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get home => 'Home';
 
   @override
+  String get somethingWentWrong => 'Something went wrong';
+
+  @override
   String get welcomeBack => 'Welcome Back';
 
   @override
@@ -76,6 +79,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resendOtpAfter => 'Resend OTP after ';
 
   @override
+  String get enterFirstName => 'Please enter your first name';
+
+  @override
+  String get enterLastName => 'Please enter your last name';
+
+  @override
+  String get enterCity => 'Please enter your city';
+
+  @override
+  String get enterPhone => 'Please enter your phone number';
+
+  @override
+  String get enterAValidEmailAddress => 'Enter a valid Email address';
+
+  @override
+  String get enterAPasswordMoreThanFive =>
+      'Enter a password more than 5 letter';
+
+  @override
+  String get confirmPasswordDoesNotMatch => 'Confirm password does not match!';
+
+  @override
   String get category => 'Category';
 
   @override
@@ -98,6 +123,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get checkout => 'Checkout';
+
+  @override
+  String get failedToDeleteItem => 'Failed to delete item';
 
   @override
   String get wishlist => 'Wishlist';
@@ -146,6 +174,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pleaseWriteAReview => 'Please write a review';
+
+  @override
+  String get noReviewsYet => 'No reviews yet';
 
   @override
   String get guest => 'Guest';

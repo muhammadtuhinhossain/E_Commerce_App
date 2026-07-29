@@ -92,7 +92,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                               context.localization.resendOtp));
                         } else {
                           return RichText(text: TextSpan(
-                              style: TextStyle(color: Colors.black),
+                              style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color ?? Colors.black),
                               children: [
                                 TextSpan(text: context.localization.resendOtpAfter ),
                                 TextSpan(text:'${_otpTimerProvider.secondsLeft}s', style: TextStyle(color: AppColors.themeColor)),

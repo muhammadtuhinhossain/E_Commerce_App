@@ -1,3 +1,4 @@
+import 'package:crafty_bay/app/extensions/localization_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -106,7 +107,7 @@ class CartItem extends StatelessWidget {
     if(context.mounted == false) return;
 
     if(isSuccess == false){
-      showSnackBarMessage(context, cartListProvider.errorMessage ?? 'Failed to delete item');
+      showSnackBarMessage(context, cartListProvider.errorMessage ?? context.localization.failedToDeleteItem);
     }
   }
 }

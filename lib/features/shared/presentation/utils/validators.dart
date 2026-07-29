@@ -1,4 +1,6 @@
+import 'package:crafty_bay/app/extensions/localization_extension.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:flutter/cupertino.dart';
 
 class Validators {
   static String? validateInput(String? input, String message){
@@ -7,21 +9,21 @@ class Validators {
     }
     return null;
   }
-  static String? validateEmail(String? input){
+  static String? validateEmail(String? input, BuildContext context){
     if(EmailValidator.validate(input ?? '')==false){
-      return 'Enter a valid Email address';
+      return context.localization.enterAValidEmailAddress;
     }
     return null;
   }
-  static String? validatePassword(String? input){
+  static String? validatePassword(String? input, BuildContext context){
     if((input ?? '').length <6){
-      return 'Enter a password more than 5 letter';
+      return context.localization.enterAPasswordMoreThanFive;
     }
     return null;
   }
-  static String? validatePasswordConfirm(String? input, String password){
+  static String? validatePasswordConfirm(String? input, String password, BuildContext context){
     if(input == password){
-      return 'Confirm password does not match!';
+      return context.localization.confirmPasswordDoesNotMatch;
     }
     return null;
   }
